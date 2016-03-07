@@ -1,0 +1,31 @@
+{
+  "name": "Commvs-adminpanel",
+  "homepage": "https://github.com/framirez4/Commvs-adminpanel",
+  "authors": [
+    "Francesc Ramírez <francescramirez@gmail.com>"
+  ],
+  "description": "Adminpanel Client for Commvs server app",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Commvs"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.0",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
+    "angular-ui-router": "^0.2.18",
+    "angular-jwt": "^0.0.9",
+    "typekit-load": "^0.1.2",
+    "a0-angular-storage": "^0.0.13"
+  }
+}
