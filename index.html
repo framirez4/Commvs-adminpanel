@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app="Adminpanel" >
+<html ng-app="Adminpanel" ng-controller="AppCtrl">
+
   <head>
     <title ng-bind="pageTitle"></title>
 
@@ -10,17 +11,23 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/a0-angular-storage/dist/angular-storage.min.js" type="text/javascript"> </script>
-    <script src="bower_components/angular-jwt/dist/angular-jwt.min.js" type="text/javascript"> </script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
+    <script type="text/javascript"src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
 
-    <script src="js/app.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/app.js" ></script>
+    <script type="text/javascript" src="js/config/routes.js" ></script>
+    <script type="text/javascript" src="js/config/interceptors.js" ></script>
     <script type="text/javascript" src="js/controllers/home.js"></script>
     <script type="text/javascript" src="js/controllers/login.js"></script>
     <script type="text/javascript" src="js/controllers/signup.js"></script>
 
-   </head>
-  <body ng-controller="AppCtrl">
+  </head>
+
+  <body>
+
     <div class="container" ui-view></div>
+
   </body>
+
 </html>

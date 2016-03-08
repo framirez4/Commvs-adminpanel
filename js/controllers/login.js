@@ -1,29 +1,36 @@
-angular.module( 'controller.login', [
-  'ui.router',
-  'angular-storage'
-])
-.config(function($stateProvider) {
-  $stateProvider.state('login', {
-    url: '/login',
-    controller: 'LoginCtrl',
-    templateUrl: '../../templates/pages/login/index.html'
-  });
-})
-.controller( 'LoginCtrl', function LoginController( $scope, $http, store, $state) {
+(function() {
+  'use strict';
 
-  $scope.user = {};
 
-  $scope.login = function() {
-    $http({
-      url: 'https://localhost:8000/api/authenticate',
-      method: 'POST',
-      data: $scope.user
-    }).then(function(response) {
-      store.set('jwt', response.data.id_token);
-      $state.go('home');
-    }, function(error) {
-      alert(error.data);
+  angular.module( 'controller.login', [
+    'angular-storage'
+  ])
+  .controller( 'LoginCtrl', LoginController );
+
+  function LoginController( $scope, $http, store, $state) {
+
+    $scope.user = {};
+    $scope.$on('signupSuccess', function(event, data) {
+      $scope.signupSuccess = data;
     });
-  }
 
-});
+    $scope.login = function() {
+      $http({
+        url: 'https://localhost:8000/api/authenticate',
+        method: 'POST',
+        data: $scope.user
+      }).then(function(response) {
+        if(response.data.success == true){
+          store.set('jwt', response.data.token);
+          $state.go('home');
+        } else {
+          $scope.loginErr = response.data.message;
+        }
+
+      }, function(error) {
+        alert(error.data);
+      });
+    }
+  };
+
+})();

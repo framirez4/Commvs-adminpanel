@@ -1,15 +1,29 @@
 <div class="home">
   <div class="jumbotron centered">
     <h1>Welcome to the Commvs-adminpanel</h1>
-    <h2 ng-show="jwt">Your JWT is:</h2>
-    <pre ng-show="jwt" class="jwt"><code>{{jwt}}</code></pre>
-    <pre ng-show="jwt" class="jwt"><code>{{decodedJwt | json}}</code></pre>
-    <!--<p>Click any of the buttons to call an API and get a response</p>
-    <p><a class="btn btn-primary btn-lg" role="button" ng-click="callAnonymousApi()">Call Anonymous API</a></p>
-    <p><a class="btn btn-primary btn-lg" role="button" ng-click="callSecuredApi()">Call Secure API</a></p>
-    <h2 ng-show="response">The response of calling the <span class="red">{{api}}</span> API is:</h2>
-    <h3 ng-show="response">{{response}}</h3>-->
+    <h5 ng-show="jwt">Your JWT is:</h5>
+    <pre ng-show="jwt" class="jwt"><small><code>{{jwt}}</code></small></pre>
   </div>
+    <!--<pre ng-show="jwt" class="jwt"><code>{{decodedJwt | json}}</code></pre>-->
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="user in users">
+          <strong>{{user.username}}</strong> {{user.email}}
+          <a class="label label-danger pull-right" ng-click="deleteUser(user._id)"><i class="fa fa-trash"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="comm in comms">
+          <strong>{{comm.name}}</strong> {{comm.description}}
+          <a class="label label-danger pull-right" ng-click="deleteUser(user._id)"><i class="fa fa-trash"></i></a>
+        </li>
+
+      </ul>
+    </div>
+
+
 
 
 

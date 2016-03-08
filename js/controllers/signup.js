@@ -1,29 +1,34 @@
-angular.module( 'controller.signup', [
-  'ui.router',
-  'angular-storage'
-])
-.config(function($stateProvider) {
-  $stateProvider.state('signup', {
-    url: '/signup',
-    controller: 'SignupCtrl',
-    templateUrl: '../../templates/pages/signup/index.html'
-  });
-})
-.controller( 'SignupCtrl', function SignupController( $scope, $http, store, $state) {
+(function() {
+  'use strict';
 
-  $scope.user = {};
+  angular.module( 'controller.signup', [
+    'angular-storage'
+  ])
+  .controller( 'SignupCtrl', SignupController);
 
-  $scope.createUser = function() {
-    $http({
-      url: 'https://localhost:8000/api/users',
-      method: 'POST',
-      data: $scope.user
-    }).then(function(response) {
-      store.set('jwt', response.data.id_token);
-      $state.go('home');
-    }, function(error) {
-      alert(error.data);
-    });
-  }
 
-});
+  function SignupController( $scope, $rootScope, $http, store, $state) {
+
+    $scope.user = {};
+
+    $scope.createUser = function() {
+      $http({
+        url: 'https://localhost:8000/api/users',
+        method: 'POST',
+        data: $scope.user
+      }).then(function(response) {
+        if(response.data.success == false){
+          $scope.signupErr = response.data.message;
+        } else {
+          $rootScope.$emit('signupSuccess', response.data.message);
+          $scope.signupSuccess = response.data.message;
+          $state.go('login');
+        }
+
+      }, function(error) {
+        alert(error.data);
+      });
+    };
+  };
+
+})();
