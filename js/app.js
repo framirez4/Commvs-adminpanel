@@ -1,10 +1,12 @@
 (function() {
   'use strict';
 
-  angular.module( 'Adminpanel', [
+  angular.module( 'app', [
     'config.routes',
     'config.interceptors',
-    'angular-storage'
+    'angular-storage',
+    'factory.comm',
+    'factory.user'
   ])
   .run( function($rootScope, $state, store, jwtHelper) {
     $rootScope.$on('$stateChangeStart', function(e, to) {

@@ -4,33 +4,26 @@
   angular.module( 'controller.home', [
     'angular-storage',
     'angular-jwt'
+
   ])
   .controller( 'HomeCtrl', HomeController);
 
 
-  function HomeController( $scope, $http, store, jwtHelper ) {
+  function HomeController( $scope, $http, store, jwtHelper, UserFactory, CommFactory) {
 
     $scope.jwt = store.get('jwt');
     //$scope.decodedJwt = $scope.jwt && jwtHelper.decodeToken($scope.jwt);
 
     $scope.getUsers = function(){
-      $http({
-        method: 'GET',
-        url: 'https://localhost:8000/api/users',
-        headers: { 'x-access-token': $scope.jwt }
-      }).then(function(data) {
+      UserFactory.get($scope.jwt)
+      .then(function(data) {
         console.log(data.data);
         $scope.users = data.data;
       });
     }
     $scope.deleteUser = function(id) {
-      var url = 'https://localhost:8000/api/users/'+id;
-      console.log(url);
-      $http({
-        method: 'DELETE',
-        url: url,
-        headers: {'x-access-token': $scope.jwt }
-      }).then(function(data) {
+      UserFactory.delete($scope.jwt, id)
+      .then(function(data) {
         $scope.getUsers();
         console.log(data);
       })
@@ -39,11 +32,8 @@
 
 
     $scope.getComms = function() {
-      $http({
-        method: 'GET',
-        url: 'https://localhost:8000/api/comms',
-        headers: { 'x-access-token': $scope.jwt }
-      }).then(function(data) {
+      CommFactory.get()
+      .then(function(data) {
         console.log(data.data);
         $scope.comms = data.data;
       });
@@ -88,5 +78,5 @@
     }
   */
   };
-  
+
 })();

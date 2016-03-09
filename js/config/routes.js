@@ -7,14 +7,14 @@
     'controller.login',
     'controller.signup'
   ])
-    .config(function( $stateProvider, $urlRouterProvider ) {
+    .config(function( $stateProvider, $urlRouterProvider, $locationProvider ) {
 
       $urlRouterProvider.otherwise('/');
 
       $stateProvider
         .state('home', {
           url: '/',
-          templateUrl: '../templates/pages/home/index.html',
+          templateUrl: '../templates/home/index.html',
           controller: 'HomeCtrl',
           data: {
             requiresLogin: true
@@ -22,14 +22,16 @@
         })
         .state('login', {
           url: '/login',
-          templateUrl: '../templates/pages/login/login.html',
+          templateUrl: '../templates/login/login.html',
           controller: 'LoginCtrl'
         })
         .state('signup', {
           url: '/signup',
-          templateUrl: '../templates/pages/login/signup.html',
+          templateUrl: '../templates/login/signup.html',
           controller: 'SignupCtrl'
         });
+
+        //$locationProvider.html5Mode(true);
     });
 
 

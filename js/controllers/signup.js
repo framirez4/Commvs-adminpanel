@@ -7,16 +7,18 @@
   .controller( 'SignupCtrl', SignupController);
 
 
-  function SignupController( $scope, $rootScope, $http, store, $state) {
+  function SignupController( $scope, $rootScope, $http, store, $state, UserFactory) {
 
     $scope.user = {};
 
     $scope.createUser = function() {
-      $http({
+      /*$http({
         url: 'https://localhost:8000/api/users',
         method: 'POST',
         data: $scope.user
-      }).then(function(response) {
+      })*/
+      UserFactory.add($scope.user)
+      .then(function(response) {
         if(response.data.success == false){
           $scope.signupErr = response.data.message;
         } else {
