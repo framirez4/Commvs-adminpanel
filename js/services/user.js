@@ -1,9 +1,9 @@
 (function(){
 
-angular.module('factory.user', ['ngResource'])
+angular.module('factory.user', [])
   .factory("UserFactory", UserFactory);
 
-  function UserFactory($http, $resource){
+  function UserFactory($http){
     return {
       get: function(jwt) {
         return $http({
