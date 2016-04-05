@@ -1,3 +1,36 @@
+<md-content layout="column" id="content" layout-align="center center">
+  <h1 class="serv-title">Kapeloi</h1>
+  <span class="serv-sub">Descubre la oferta de tiendas a tu alrededor</span>
+  <div layout="column" layout-align="center center" layout-fill>
+    <md-whiteframe class="md-whiteframe-z1">
+      <md-content class="card-e" layout-padding>
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input autocomplete="off" ng-model="user.email">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Password</label>
+          <input autocomplete="off" ng-model="user.password" type="password">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Role</label>
+          <md-select ng-model="user.role">
+            <md-option value="user">User</md-option>
+            <md-option value="admin">Admin</md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container  class="md-block">
+          <div layout="row" layout-margin>
+            <md-button class="md-raised" ui-sref="login()"><i class="fa fa-chevron-circle-left"></i>&nbsp;Back</md-button>
+            <md-button class="md-raised md-primary" ng-click="createUser()">Register</md-button>
+          </div>
+        </md-input-container>
+      </md-content>
+    </md-whiteframe>
+  </div>
+</md-content>
+
+<!--
 <div class="signup center-block jumbotron">
   <form role="form">
   <h1>Signup</h1>
@@ -18,3 +51,4 @@
 </form>
 <a ui-sref="login()">Click here to Login</a>
 </div>
+-->

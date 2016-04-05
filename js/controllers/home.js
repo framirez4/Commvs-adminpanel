@@ -10,10 +10,30 @@
   .controller('LeftCtrl', LeftCtrl);
 
 
-  function HomeController( $scope, $http, store, jwtHelper, UserFactory, CommFactory, $mdSidenav) {
+  function HomeController( $scope, $http, store, jwtHelper, UserFactory, CommFactory, $mdSidenav, $mdDialog, $state) {
 
     $scope.toggleLeft = function(){ $mdSidenav('left').toggle(); };
 
+    var originatorEv;
+    $scope.openMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
+    $scope.announceClick = function(index) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .title('You clicked!')
+          .textContent('You clicked the menu item at index ' + index)
+          .ok('Nice')
+          .targetEvent(originatorEv)
+      );
+      originatorEv = null;
+    };
+
+    $scope.logout = function(){
+      store.remove('jwt');
+      $state.go('login');
+    };
 
     $scope.jwt = store.get('jwt');
     //$scope.decodedJwt = $scope.jwt && jwtHelper.decodeToken($scope.jwt);

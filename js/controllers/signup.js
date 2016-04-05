@@ -12,11 +12,6 @@
     $scope.user = {};
 
     $scope.createUser = function() {
-      /*$http({
-        url: 'https://localhost:8000/api/users',
-        method: 'POST',
-        data: $scope.user
-      })*/
       UserFactory.add($scope.user)
       .then(function(response) {
         if(response.data.success == false){

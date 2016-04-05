@@ -11,7 +11,10 @@ html, body {
 md-toolbar {
  /*height:70px;*/
 }
-
+md-content .card-e {
+  background-color: #eee;
+  padding: 15px;
+}
 md-toolbar h3 {
   margin: auto;
   font-weight: 500;
@@ -26,6 +29,21 @@ md-list-item > button {
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 5px;
+}
+
+.serv-title {
+  font-family: 'Varela Round', sans-serif;
+  font-weight:bolder;
+  color:#4527A0;
+  font-size: 56px;
+  margin-bottom: 10px;
+  font-variant: small-caps;
+  letter-spacing:10px;
+}
+.serv-sub {
+  font-size: 24px;
+  margin-bottom: 40px;
+  text-align:center;
 }
 
 .avatar {

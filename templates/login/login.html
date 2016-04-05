@@ -1,3 +1,29 @@
+			<md-content layout="column" id="content" layout-align="center center">
+
+        <h1 class="serv-title">Kapeloi</h1>
+        <span class="serv-sub">Descubre la oferta de tiendas a tu alrededor</span>
+        <div layout="column" layout-align="center center" layout-fill>
+					<md-whiteframe class="md-whiteframe-z1" layout="column" flex="30">
+            <md-content class="card-e" layout-paddinig>
+							<md-input-container class="md-block">
+								<label>Email</label>
+								<input ng-model="user.email">
+							</md-input-container>
+							<md-input-container class="md-block">
+								<label>Password</label>
+								<input ng-model="user.password" type="password">
+							</md-input-container>
+							<md-input-container >
+								<div layout="row" layout-margin>
+									<md-button class="md-raised" ng-click="login()">Login</md-button>
+									<md-button class="md-raised md-primary" ui-sref="signup()">Register</md-button>
+								</div>
+							</md-input-container>
+						</md-content>
+					</md-whiteframe>
+				</div>
+			</md-content>
+<!--
 <div class="login jumbotron center-block">
   <h1>Login</h1>
   <div ng-show="signupSuccess" class="alert alert-success" role="alert">{{signupSuccess}}</div>
@@ -11,7 +37,8 @@
       <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Password">
     </div>
     <div ng-show="loginErr" class="alert alert-danger" role="alert">{{loginErr}}</div>
-    <button type="submit" class="btn btn-default" ng-click="login()">Submit</button>
+    <button type="submit" class="btn btn-default" >Submit</button>
   </form>
   <a ui-sref="signup()">Click here to Signup</a>
 </div>
+-->
