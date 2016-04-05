@@ -2,6 +2,7 @@
   'use strict';
 
   angular.module( 'app', [
+    'ngMaterial',
     'config.routes',
     'config.interceptors',
     'angular-storage',

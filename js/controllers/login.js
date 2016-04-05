@@ -3,11 +3,12 @@
 
 
   angular.module( 'controller.login', [
-    'angular-storage'
+    'angular-storage',
+    'factory.auth'
   ])
   .controller( 'LoginCtrl', LoginController );
 
-  function LoginController( $scope, $http, store, $state) {
+  function LoginController( $scope, $http, store, $state, AuthFactory) {
 
     $scope.user = {};
     $scope.$on('signupSuccess', function(event, data) {
@@ -15,8 +16,9 @@
     });
 
     $scope.login = function() {
+      //AuthFactory.auth($scope.user)
       $http({
-        url: 'https://localhost:8000/api/authenticate',
+        url: 'http://192.168.1.140:8000/authenticate',
         method: 'POST',
         data: $scope.user
       }).then(function(response) {
