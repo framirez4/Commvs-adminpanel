@@ -1,5 +1,7 @@
 # bower packages
 bower_components
 node_modules
+
+# Configuration files
+configFile.json
 /js/config/configFile.js
-./configFile.json
