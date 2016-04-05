@@ -1,0 +1,22 @@
+{
+  "name": "kapeloi-panel",
+  "version": "1.0.0",
+  "description": "Panel interface for kapeloi-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/framirez4/Commvs-adminpanel.git"
+  },
+  "author": "Francesc Ramírez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/framirez4/Commvs-adminpanel/issues"
+  },
+  "homepage": "https://github.com/framirez4/Commvs-adminpanel#readme",
+  "dependencies": {
+    "gulp-ng-config": "^1.2.1"
+  }
+}

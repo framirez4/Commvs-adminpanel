@@ -1,23 +1,21 @@
 (function() {
   'use strict';
-  //var HOST = 'https://api.commvs.tk'
-  var HOST = 'http://192.168.1.140:8000'
 
-  angular.module('factory.favs', [])
+  angular.module('factory.favs', ['kapeloi.config'])
     .factory("FavFactory", FavFactory);
 
-  function FavFactory($http){
+  function FavFactory($http, hostServer){
     return {
       add: function() {
         return $http({
           method: 'GET',
-          url: HOST + '/comms'
+          url: hostServer + '/comms'
         });
       },
       remove: function)(){
         return $http({
           method: 'DELETE',
-          url: 
+          url: hostServer + '/favs'
         })
       }
     }

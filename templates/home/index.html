@@ -1,8 +1,10 @@
 <md-toolbar layout="row">
-  <md-button ng-click="toggleLeft()" class="md-primary menu" hide-gt-sm="">
+
+  <md-button ng-click="toggleLeft()" class="md-primary menu" hide-gt-sm="" aria-label="menu">
     <i class="fa fa-bars"></i>
   </md-button>
-  <h3>Commvs panel</h3>
+
+  <h3>Kapeloi panel</h3>
 
   <md-menu md-position-mode="target-right target">
     <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
@@ -14,7 +16,6 @@
         <md-button ng-click="announceClick($index)">
             <div layout="row" flex="">
               <p flex="">Option {{item}}</p>
-              <md-icon md-menu-align-target="" md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
             </div>
         </md-button>
       </md-menu-item>
@@ -26,41 +27,42 @@
     </md-menu-content>
   </md-menu>
 
-
 </md-toolbar>
+
+
 <div class="container layout-row flex" layout="row" flex>
 
-<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4" layout="column">
-  <md-content ng-controller="LeftCtrl" >
-    <md-button ng-click="close()" class="md-primary" hide-gt-sm="">
-      Close Sidenav Left
-    </md-button>
-    <md-list>
-      <md-list-item ng-repeat="user in users">
-        <strong>{{user._id}}</strong>&nbsp;({{user.role}})
-        <a class="label label-danger pull-right" ng-click="deleteUser(user._id)"><i class="fa fa-trash"></i></a>
-      </md-list-item>
-    </md-list>
+  <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4" layout="column">
+    <md-content ng-controller="LeftCtrl" >
+      <md-button ng-click="close()" class="md-primary" hide-gt-sm="">
+        Close Sidenav Left
+      </md-button>
+      <md-list>
+        <md-list-item ng-repeat="user in users">
+          <strong>{{user._id}}</strong>&nbsp;({{user.role}})
+          <a class="label label-danger pull-right" ng-click="deleteUser(user._id)"><i class="fa fa-trash"></i></a>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+
+
+  <md-content flex id="content" class="flex">
+    <div layout-fill="" layout-align="top center">
+      <md-list>
+        <md-subheader class="md-no-sticky">Available Comms</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
+          <img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ comm.name }}</h3>
+            <h4>{{ comm.location }}</h4>
+            <p>{{ comm.description }}</p>
+
+          </div>
+        </md-list-item>
+      </md-list>
+    </div>
   </md-content>
-</md-sidenav>
-
-
-<md-content flex id="content" class="flex">
-  <div layout-fill="" layout-align="top center">
-    <md-list>
-      <md-subheader class="md-no-sticky">Available Comms</md-subheader>
-      <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
-        <img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">
-        <div class="md-list-item-text" layout="column">
-          <h3>{{ comm.name }}</h3>
-          <h4>{{ comm.location }}</h4>
-          <!--<p>{{ comm.description }}</p>-->
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-      </md-list-item>
-    </md-list>
-  </div>
-</md-content>
 
 
 </div>

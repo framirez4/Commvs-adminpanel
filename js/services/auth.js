@@ -1,18 +1,16 @@
 (function(){
   'use strict';
 
-  //var HOST = 'https://api.commvs.tk'
-  var HOST = 'http://192.168.1.140:8000'
-
-  angular.module('factory.auth', [])
+  angular.module('factory.auth', ['kapeloi.config'])
     .factory("AuthFactory", AuthFactory);
 
-  function AuthFactory($http){
+  function AuthFactory($http, hostServer){
+
     return {
       auth: function(user) {
         return $http({
           method: 'POST',
-          url: HOST+'/authenticate',
+          url: hostServer+'/authenticate',
           data: user
         });
       }

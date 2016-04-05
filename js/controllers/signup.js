@@ -2,13 +2,13 @@
   'use strict';
 
   angular.module( 'controller.signup', [
-    'angular-storage'
+    'angular-storage',
+    'kapeloi.config'
   ])
   .controller( 'SignupCtrl', SignupController);
 
 
   function SignupController( $scope, $rootScope, $http, store, $state, UserFactory) {
-
     $scope.user = {};
 
     $scope.createUser = function() {
