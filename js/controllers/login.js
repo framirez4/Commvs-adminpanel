@@ -16,12 +16,8 @@
     });
 
     $scope.login = function() {
-      //AuthFactory.auth($scope.user)
-      $http({
-        url: 'http://192.168.1.140:8000/authenticate',
-        method: 'POST',
-        data: $scope.user
-      }).then(function(response) {
+      AuthFactory.auth($scope.user)
+      .then(function(response) {
         if(response.data.success == true){
           store.set('jwt', response.data.token);
           $state.go('home');
