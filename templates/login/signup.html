@@ -1,7 +1,7 @@
-<md-content layout="column" id="content" layout-align="center center">
-  <h1 class="serv-title">Kapeloi</h1>
-  <span class="serv-sub">Descubre la oferta de tiendas a tu alrededor</span>
-  <div layout="column" layout-align="center center" layout-fill>
+<div class="container" layout="row" flex  layout-align="center center">
+  <md-content layout="column" class="login-card" flex-gt-sm="60" flex-gt-md="40" style="padding:40px;">
+    <h1 class="serv-title">Kapeloi</h1>
+    <span class="serv-sub">Descubre la oferta de tiendas a tu alrededor</span>
     <md-whiteframe class="md-whiteframe-z1">
       <md-content class="card-e" layout-padding>
         <md-input-container class="md-block">
@@ -19,6 +19,10 @@
             <md-option value="admin">Admin</md-option>
           </md-select>
         </md-input-container>
+        <p ng-show="signupErr" class="error">
+          {{signupErr[0]}}
+          {{signupErr[1]}}
+        </p>
         <md-input-container  class="md-block">
           <div layout="row" layout-margin>
             <md-button class="md-raised" ui-sref="login()"><i class="fa fa-chevron-circle-left"></i>&nbsp;Back</md-button>
@@ -27,28 +31,5 @@
         </md-input-container>
       </md-content>
     </md-whiteframe>
-  </div>
 </md-content>
-
-<!--
-<div class="signup center-block jumbotron">
-  <form role="form">
-  <h1>Signup</h1>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="text" class="form-control" id="email" ng-model="user.email" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="role">Role</label>
-    <input type="text" class="form-control" id="role" ng-model="user.role " placeholder="role">
-  </div>
-  <div ng-show="signupErr" class="alert alert-danger" role="alert">{{signupErr}}</div>
-  <button type="submit" class="btn btn-default" ng-click="createUser()">Submit</button>
-</form>
-<a ui-sref="login()">Click here to Login</a>
 </div>
--->

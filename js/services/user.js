@@ -22,11 +22,12 @@
           data: user
         });
       },
-      put: function(password) {
+      put: function(jwt, password) {
         return $http({
           method: 'PUT',
           url: hostServer + '/users',
-          data: { password: password }
+          headers: {'x-access-token': jwt },
+          data: password
         });
       },
       // Delete a user by id

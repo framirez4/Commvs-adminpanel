@@ -12,9 +12,13 @@ md-toolbar {
  /*height:70px;*/
 }
 md-content .card-e {
-  background-color: #eee;
   padding: 15px;
+  background-color: #eee;
 }
+.login-card {
+      text-align: center;
+}
+
 md-toolbar h3 {
   margin: auto;
   font-weight: 500;
@@ -30,7 +34,13 @@ md-list-item > button {
   padding-right: 40px;
   padding-top: 5px;
 }
-
+p.error {
+  padding: 8px;
+  background-color: rgba(255,0,0, 0.1);
+  color: red;
+  border: solid red 1px;
+  border-radius: 4px;
+}
 .serv-title {
   font-family: 'Varela Round', sans-serif;
   font-weight:bolder;

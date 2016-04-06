@@ -3,6 +3,7 @@
 
   angular.module( 'app', [
     'ngMaterial',
+    'ngMessages',
     'config.routes',
     'config.interceptors',
     'angular-storage',

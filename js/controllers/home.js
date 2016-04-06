@@ -32,6 +32,7 @@
         $scope.users = data.data;
       });
     }
+
     $scope.deleteUser = function(email) {
       UserFactory.delete($scope.jwt, {'email': email })
       .then(function(data) {
@@ -64,10 +65,22 @@
 
   };
 
-  function LeftCtrl ($scope, $mdSidenav) {
+  function LeftCtrl ($scope, $mdSidenav, UserFactory) {
     $scope.close = function () {
       $mdSidenav('left').close();
     };
+
+    $scope.changePass = function(user){
+      UserFactory.put($scope.jwt, {'password': $scope.user.password})
+      .then(function(data) {
+        if (data.data.success === false) {
+          $scope.passch = data.data.message;
+        } else if(data.data.success === true) {
+          $scope.passch = data.data.message;
+        }
+
+      });
+    }
   };
 
 

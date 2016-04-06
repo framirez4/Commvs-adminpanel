@@ -37,6 +37,17 @@
       <md-button ng-click="close()" class="md-primary" hide-gt-sm="">
         Close Sidenav Left
       </md-button>
+      <md-content flex class="">
+        <md-input-container>
+          <label>Change password:</label>
+          <input type="password" ng-model="user.password">
+          <md-button class="md-raised md-primary" ng-click="changePass()">Change</md-button>
+          <p>
+            {{passch}}
+          </p>
+        </md-input-container>
+      </md-content>
+
       <md-list>
         <md-list-item ng-repeat="user in users">
           <strong>{{user._id}}</strong>&nbsp;({{user.role}})
@@ -45,6 +56,7 @@
       </md-list>
     </md-content>
   </md-sidenav>
+
 
 
   <md-content flex id="content" class="flex">
@@ -57,7 +69,6 @@
             <h3>{{ comm.name }}</h3>
             <h4>{{ comm.location }}</h4>
             <p>{{ comm.description }}</p>
-
           </div>
         </md-list-item>
       </md-list>
