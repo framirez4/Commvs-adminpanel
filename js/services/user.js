@@ -23,6 +23,7 @@
         });
       },
       put: function(jwt, password) {
+        console.log(password);
         return $http({
           method: 'PUT',
           url: hostServer + '/users',

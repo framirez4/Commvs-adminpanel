@@ -7,12 +7,12 @@
   <h3>Kapeloi panel</h3>
 
   <md-menu md-position-mode="target-right target">
-    <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+    <md-button aria-label="Open menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
       <i class="fa fa-caret-square-o-down"></i>
     </md-button>
 
     <md-menu-content width="4">
-      <md-menu-item ng-repeat="item in [1, 2, 3]">
+      <md-menu-item ng-repeat="item in [1, 2]">
         <md-button ng-click="announceClick($index)">
             <div layout="row" flex="">
               <p flex="">Option {{item}}</p>
@@ -30,49 +30,110 @@
 </md-toolbar>
 
 
-<div class="container layout-row flex" layout="row" flex>
+<div class="layout-row flex" layout="row" flex>
 
   <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4" layout="column">
-    <md-content ng-controller="LeftCtrl" >
+    <md-content flex ng-controller="LeftCtrl" >
       <md-button ng-click="close()" class="md-primary" hide-gt-sm="">
         Close Sidenav Left
       </md-button>
-      <md-content flex class="">
+      <div flex class="">
         <md-input-container>
           <label>Change password:</label>
-          <input type="password" ng-model="user.password">
+          <input type="password" ng-model="user_ch.password">
           <md-button class="md-raised md-primary" ng-click="changePass()">Change</md-button>
           <p>
-            {{passch}}
+            {{user_ch.password}}
           </p>
         </md-input-container>
-      </md-content>
-
-      <md-list>
-        <md-list-item ng-repeat="user in users">
-          <strong>{{user._id}}</strong>&nbsp;({{user.role}})
-          <a class="label label-danger pull-right" ng-click="deleteUser(user._id)"><i class="fa fa-trash"></i></a>
-        </md-list-item>
-      </md-list>
+      </div>
     </md-content>
   </md-sidenav>
 
 
 
-  <md-content flex id="content" class="flex">
-    <div layout-fill="" layout-align="top center">
-      <md-list>
-        <md-subheader class="md-no-sticky">Available Comms</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
-          <img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">
-          <div class="md-list-item-text" layout="column">
-            <h3>{{ comm.name }}</h3>
-            <h4>{{ comm.location }}</h4>
-            <p>{{ comm.description }}</p>
-          </div>
-        </md-list-item>
-      </md-list>
+  <md-content flex id="content">
+    <div layout="column">
+      <div layout-fill="" layout-align="top center">
+        <md-list>
+          <md-subheader class="md-no-sticky">Available Comms</md-subheader>
+          <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
+            <img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">
+            <div class="md-list-item-text" layout="column">
+              <h3>{{ comm.name }} | {{ comm._id }}</h3>
+              <h4>{{ comm.location }}</h4>
+              <p>{{ comm.description }}</p>
+            </div>
+            <div>
+              <md-button class="md-primary" ng-click="toggleStar(comm._id)" aria-label="Star">
+                <i ng-show="favs.indexOf(comm._id) != -1" class="fa fa-star"></i>
+                <i ng-show="favs.indexOf(comm._id) == -1" class="fa fa-star-o"></i>
+              </md-button>
+            </div>
+            <div>
+              <md-button class="md-warn" ng-click="deleteComm(comm._id)" aria-label="Delete" ng-show="role === 'admin'"><i class="fa fa-trash"></i></md-button>
+            </div>
+            <div>
+              <md-button class="md-primary" ng-click="getOwnerkey(comm._id, $event)" aria-label="Ownerkey" ng-show="role === 'admin'"><i class="fa fa-key"></i></md-button>
+            </div>
+
+          </md-list-item>
+        </md-list>
+      </div>
+      <div md-whiteframe="3" class="container" ng-show="role === 'admin'">
+        <form name="newCommForm">
+          <md-input-container>
+            <label>Nombre</label>
+            <input ng-model="newcomm.name">
+          </md-input-container>
+          <md-input-container>
+            <label>Localidad</label>
+            <input ng-model="newcomm.location">
+          </md-input-container>
+          <md-input-container>
+            <label>Actividad</label>
+            <input ng-model="newcomm.activity">
+          </md-input-container>
+          <md-input-container>
+            <label>Web</label>
+            <input ng-model="newcomm.web">
+          </md-input-container>
+          <md-input-container>
+            <label>Email</label>
+            <input ng-model="newcomm.email">
+          </md-input-container>
+          <md-input-container>
+            <label>Dirección</label>
+            <input ng-model="newcomm.address">
+          </md-input-container>
+          <md-input-container>
+            <label>Descripción</label>
+            <input ng-model="newcomm.description">
+          </md-input-container>
+          <md-input-container>
+            <label>Teléfono</label>
+            <input ng-model="newcomm.phone">
+          </md-input-container>
+          <md-input-container>
+            <label>GPS</label>
+            <input ng-model="newcomm.gps">
+          </md-input-container>
+          <md-button class="md-raised md-primary" ng-click="addComm()">Añadir</md-button>
+        </form>
+      </div>
+      <div  md-whiteframe="3" class="container" flex ng-show="role === 'admin'">
+        <md-list>
+          <md-list-item ng-repeat="user in users">
+            <strong>{{user._id}}</strong>&nbsp;({{user.role}})
+            <div>
+              <md-button class="md-warn" ng-click="deleteUser(user._id)" aria-label="Delete"><i class="fa fa-trash"></i></md-button>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
     </div>
+
+
   </md-content>
 
 

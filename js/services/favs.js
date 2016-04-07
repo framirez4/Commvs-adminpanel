@@ -6,16 +6,22 @@
 
   function FavFactory($http, hostServer){
     return {
-      add: function() {
+      add: function(jwt, id) {
+        console.log('id::::'+JSON.stringify(id));
         return $http({
-          method: 'GET',
-          url: hostServer + '/comms'
+          method: 'POST',
+          url: hostServer + '/favs',
+          headers: {'x-access-token': jwt },
+          data: id
         });
       },
-      remove: function)(){
+      delete: function(jwt, id){
+        console.log('id::::'+JSON.stringify(id));
         return $http({
           method: 'DELETE',
-          url: hostServer + '/favs'
+          url: hostServer + '/favs',
+          headers: {'x-access-token': jwt },
+          params: id
         })
       }
     }

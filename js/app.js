@@ -6,9 +6,7 @@
     'ngMessages',
     'config.routes',
     'config.interceptors',
-    'angular-storage',
-    'factory.comm',
-    'factory.user'
+    'angular-storage'
   ])
   .run( function($rootScope, $state, store, jwtHelper) {
     $rootScope.$on('$stateChangeStart', function(e, to) {
