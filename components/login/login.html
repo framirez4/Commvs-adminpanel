@@ -14,7 +14,7 @@
 		        </div>
 					</md-input-container>
 					<md-input-container class="md-block">
-						<label>Password</label>
+						<label>Contraseña</label>
 						<input ng-model="user.password" type="password">
 					</md-input-container>
 					<p ng-show="loginErr" class="error">
@@ -22,8 +22,8 @@
 					</p>
 					<md-input-container >
 						<div layout="row" layout-margin>
-							<md-button class="md-raised" ng-click="login()">Login</md-button>
-							<md-button class="md-raised md-primary" ui-sref="signup()">Register</md-button>
+							<md-button type="submit" class="md-raised" ng-click="login()">Iniciar sesión</md-button>
+							<md-button class="md-raised md-primary" ui-sref="signup()">Registrarme</md-button>
 						</div>
 					</md-input-container>
 				</form>

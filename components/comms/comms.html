@@ -1,0 +1,60 @@
+<!--<md-toolbar class="md-primary" layout="row">
+  <p flex>
+    buscador
+  </p>
+  <md-icon class="material-icons">search</md-icon>
+</md-toolbar>
+-->
+<md-content flex id="content">
+  <div layout="column">
+    <div layout-fill="" layout-align="top center">
+      <md-list>
+        <md-subheader class="md-no-sticky">Available Comms at {{geolocation}}</md-subheader>
+        <div ui-view></div>
+      </md-list>
+    </div>
+    <div md-whiteframe="3" class="container" ng-show="role === 'admin'">
+      <form name="newCommForm">
+        <md-input-container>
+          <label>Nombre</label>
+          <input ng-model="newcomm.name">
+        </md-input-container>
+        <md-input-container>
+          <label>Localidad</label>
+          <input ng-model="newcomm.location">
+        </md-input-container>
+        <md-input-container>
+          <label>Actividad</label>
+          <input ng-model="newcomm.activity">
+        </md-input-container>
+        <md-input-container>
+          <label>Web</label>
+          <input ng-model="newcomm.web">
+        </md-input-container>
+        <md-input-container>
+          <label>Email</label>
+          <input ng-model="newcomm.email">
+        </md-input-container>
+        <md-input-container>
+          <label>Dirección</label>
+          <input ng-model="newcomm.address">
+        </md-input-container>
+        <md-input-container>
+          <label>Descripción</label>
+          <input ng-model="newcomm.description">
+        </md-input-container>
+        <md-input-container>
+          <label>Teléfono</label>
+          <input ng-model="newcomm.phone">
+        </md-input-container>
+        <md-input-container>
+          <label>GPS</label>
+          <input ng-model="newcomm.gps">
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="addComm()">Añadir</md-button>
+      </form>
+    </div>
+  </div>
+
+
+</md-content>

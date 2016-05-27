@@ -1,3 +1,10 @@
+.material-icons.md-18 { font-size: 18px; height:18px; width:18px; }
+.material-icons.md-24 { font-size: 24px; } /* Default */
+.material-icons.md-36 { font-size: 36px; height:36px; width: 36px; }
+.material-icons.md-48 { font-size: 48px; height:48px; width: 48px; }
+
+
+
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size:14px;
@@ -9,7 +16,11 @@ html, body {
 /** Enabled Step 3... */
 
 md-toolbar {
- /*height:70px;*/
+  padding-left: 15px;
+  padding-right:15px;
+}
+md-toolbar h3 {
+  font-family: 'Cinzel', serif;
 }
 md-content .card-e {
   padding: 15px;
@@ -39,6 +50,31 @@ md-list-item > button {
   padding: 15px;
   margin-bottom: 20px;
 }
+
+#sidenav-menu ul {
+  padding-left: 0;
+}
+#sidenav-menu ul li {
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#sidenav-menu ul li .material-icons{
+  vertical-align: middle;
+}
+#sidenav-menu ul li:hover {
+  background-color: #3F51B5;
+  color:white;
+}
+#sidenav-menu ul li:focus {
+  outline:none;
+}
+.active {
+  background-color: #3F51B5;
+  color:white;
+}
+
+
 p.error {
   padding: 8px;
   background-color: rgba(255,0,0, 0.1);
@@ -47,7 +83,7 @@ p.error {
   border-radius: 4px;
 }
 .serv-title {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Cinzel', serif;
   font-weight:bolder;
   color:#4527A0;
   font-size: 56px;
@@ -59,6 +95,12 @@ p.error {
   font-size: 24px;
   margin-bottom: 40px;
   text-align:center;
+}
+
+.fa-24 {
+  font-size: 24px;
+  height: 24px;
+  width: 24px;
 }
 
 .avatar {

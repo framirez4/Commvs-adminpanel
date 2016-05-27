@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html ng-app="app" ng-cloak="" ng-controller="AppCtrl">
+<html ng-app="kapeloi" ng-cloak="" ng-controller="AppController">
 
   <head>
     <title ng-bind="pageTitle"></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/" />
 
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-
+    <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" >
 
     <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.min.js"></script>
@@ -24,23 +25,32 @@
 
     <script type="text/javascript" src="js/app.js"></script>
 
-    <script type="text/javascript" src="js/config/configFile.js"></script>
-    <script type="text/javascript" src="js/config/routes.js"></script>
-    <script type="text/javascript" src="js/config/interceptors.js" ></script>
+    <script type="text/javascript" src="components/login/login.js"></script>
+    <script type="text/javascript" src="components/signup/signup.js"></script>
+    <script type="text/javascript" src="components/home/home.js"></script>
+    <script type="text/javascript" src="components/toolbar/toolbar.js"></script>
+    <script type="text/javascript" src="components/sidenav/sidenav.js"></script>
+    <script type="text/javascript" src="components/settings/settings.js"></script>
+    <script type="text/javascript" src="components/comms/comms.js"></script>
+    <script type="text/javascript" src="components/users/users.js"></script>
+    <script type="text/javascript" src="components/promos/promos.js"></script>
+    <script type="text/javascript" src="components/owners/owners.js"></script>
+    <script type="text/javascript" src="components/favs/favs.js"></script>
 
     <script type="text/javascript" src="js/services/user.js"></script>
     <script type="text/javascript" src="js/services/comm.js"></script>
     <script type="text/javascript" src="js/services/auth.js"></script>
     <script type="text/javascript" src="js/services/favs.js"></script>
     <script type="text/javascript" src="js/services/ownership.js"></script>
+    <script type="text/javascript" src="js/services/search.js"></script>
 
-    <script type="text/javascript" src="js/controllers/home.js"></script>
-    <script type="text/javascript" src="js/controllers/login.js"></script>
-    <script type="text/javascript" src="js/controllers/signup.js"></script>
+    <script type="text/javascript" src="js/config/configFile.js"></script>
+    <script type="text/javascript" src="js/config/routes.js"></script>
+    <script type="text/javascript" src="js/config/interceptors.js" ></script>
 
   </head>
 
-  <body layout="column" ui-view>
+  <body layout="column" ui-view flex>
 
   </body>
 

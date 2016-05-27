@@ -13,10 +13,18 @@ function OwnershipFactory($http, hostServer){
         headers: {'x-access-token': jwt }
       });
     },
-    delete: function(jwt, comm) {
+    post: function(jwt, comm_id, code) {
+      return $http({
+        method: 'POST',
+        url: hostServer + '/ownership/' + comm_id,
+        headers: {'x-access-token': jwt },
+        data: { 'key': code }
+      });
+    },
+    delete: function(jwt, comm_id) {
       return $http({
         method: 'DELETE',
-        url: hostServer + '/comms/' + comm,
+        url: hostServer + '/ownership/' + comm_id,
         headers: {'x-access-token': jwt }
       });
     }

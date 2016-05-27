@@ -1,0 +1,18 @@
+<md-content flex>
+  <md-button ng-click="close()" class="md-primary" hide-gt-sm="" aria-label="close sidenav">
+    <i class="fa fa-times"></i>
+  </md-button>
+  <md-toolbar layout="row" class="md-hue-1">
+    <div class="md-toolbar-tools">
+      <span>Nombre y correo</span>
+    </div>
+  </md-toolbar>
+  <md-content id="sidenav-menu">
+    <ul flex class="side-menu">
+      <li class="md-3-line " ng-repeat="section in sections" ui-sref="{{section.state}}" ui-sref-active="active" ng-click="close()">
+          <i class="material-icons">{{section.icon}}</i><span>&nbsp;{{section.name}}</span>
+      </li>
+
+    </ul>
+  </md-content>
+</md-content>

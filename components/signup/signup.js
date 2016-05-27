@@ -5,15 +5,16 @@
     'angular-storage',
     'kapeloi.config'
   ])
-  .controller( 'SignupCtrl', SignupController);
+  .controller( 'SignupController', SignupController);
 
 
-  function SignupController( $scope, $rootScope, $http, store, $state, UserFactory) {
+  function SignupController( $scope, $rootScope, $http, store, $state, UserFactory ) {
     $scope.user = {};
 
     $scope.createUser = function() {
       UserFactory.add($scope.user)
       .then(function(response) {
+        console.log(response);
         if(response.data.success == false){
           $scope.signupErr = response.data.message;
           console.log($scope.signupErr)

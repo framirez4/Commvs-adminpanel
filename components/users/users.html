@@ -1,0 +1,13 @@
+
+<div id="content">
+  <div  md-whiteframe="3" flex ng-show="role === 'admin'">
+    <md-list>
+      <md-list-item ng-repeat="user in users">
+        <strong>{{user._id}}</strong>&nbsp;({{user.role}})
+        <div>
+          <md-button class="md-warn" ng-click="deleteUser(user._id)" aria-label="Delete"><i class="fa fa-trash"></i></md-button>
+        </div>
+      </md-list-item>
+    </md-list>
+  </div>
+</div>
