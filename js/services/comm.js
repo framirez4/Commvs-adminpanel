@@ -27,6 +27,14 @@
           data: comm_obj
         });
       },
+      edit: function(jwt, comm_obj) {
+        return $http({
+          method: 'PUT',
+          url: hostServer + '/comms/bigues_essencial',
+          headers: {'x-access-token': jwt },
+          data: comm_obj
+        });
+      },
       delete: function(jwt, comm_id) {
         return $http({
           method: 'DELETE',

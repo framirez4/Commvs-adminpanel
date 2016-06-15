@@ -5,56 +5,42 @@
   <md-icon class="material-icons">search</md-icon>
 </md-toolbar>
 -->
-<md-content flex id="content">
-  <div layout="column">
-    <div layout-fill="" layout-align="top center">
-      <md-list>
-        <md-subheader class="md-no-sticky">Available Comms at {{geolocation}}</md-subheader>
-        <div ui-view></div>
-      </md-list>
-    </div>
-    <div md-whiteframe="3" class="container" ng-show="role === 'admin'">
-      <form name="newCommForm">
-        <md-input-container>
-          <label>Nombre</label>
-          <input ng-model="newcomm.name">
-        </md-input-container>
-        <md-input-container>
-          <label>Localidad</label>
-          <input ng-model="newcomm.location">
-        </md-input-container>
-        <md-input-container>
-          <label>Actividad</label>
-          <input ng-model="newcomm.activity">
-        </md-input-container>
-        <md-input-container>
-          <label>Web</label>
-          <input ng-model="newcomm.web">
-        </md-input-container>
-        <md-input-container>
-          <label>Email</label>
-          <input ng-model="newcomm.email">
-        </md-input-container>
-        <md-input-container>
-          <label>Dirección</label>
-          <input ng-model="newcomm.address">
-        </md-input-container>
-        <md-input-container>
-          <label>Descripción</label>
-          <input ng-model="newcomm.description">
-        </md-input-container>
-        <md-input-container>
-          <label>Teléfono</label>
-          <input ng-model="newcomm.phone">
-        </md-input-container>
-        <md-input-container>
-          <label>GPS</label>
-          <input ng-model="newcomm.gps">
-        </md-input-container>
-        <md-button class="md-raised md-primary" ng-click="addComm()">Añadir</md-button>
-      </form>
-    </div>
-  </div>
+<div ui-view>
 
 
-</md-content>
+  <md-content flex id="content">
+    <div layout="column">
+      <div layout-fill="" layout-align="top center">
+        <md-list>
+          <md-subheader class="md-no-sticky">Available Comms at {{geolocation}}</md-subheader>
+
+          <md-list-item class="md-3-line" ng-repeat="comm in comms">
+            <img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">
+            <div class="md-list-item-text" layout="column">
+              <h3>{{ comm.name }} | <small>{{ comm._id }}</small></h3>
+              <h4>{{ comm.location }}</h4>
+              <p>{{ comm.description }}</p>
+            </div>
+            <div>
+              <md-button class="md-primary" ui-sref="home.main.comms.comm({comm: comm._id})">
+                +Info
+              </md-button>
+            </div>
+            <div>
+              <md-button class="md-primary" ng-click="toggleStar(comm._id)" aria-label="Star">
+                <md-icon ng-show="favs && favs.indexOf(comm._id) != -1" class="material-icons md-18">star</md-icon>
+                <md-icon ng-show="favs && favs.indexOf(comm._id) == -1" class="material-icons md-18">star_border</md-icon>
+              </md-button>
+            </div>
+            <div ui-view="comminfo"><div>
+          </md-list-item>
+
+
+
+        </md-list>
+      </div>
+    </div>
+  </md-content>
+
+
+</div>

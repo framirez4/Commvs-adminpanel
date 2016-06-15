@@ -10,8 +10,15 @@
       auth: function(user) {
         return $http({
           method: 'POST',
-          url: hostServer+'/authenticate',
+          url: hostServer + '/authenticate',
           data: user
+        });
+      },
+      refresh: function(jwt) {
+        return $http({
+          method: 'POST',
+          url: hostServer + '/authenticate/refresh',
+          headers: { 'x-access-token': jwt }
         });
       }
     }

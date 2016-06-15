@@ -1,0 +1,42 @@
+<md-button class="md-raised" ui-sref="home.main.owners.list">Volver a la lista</md-button>
+<div md-whiteframe="3" class="container">
+  <form name="newCommForm">
+    <md-input-container>
+      <label>Nombre</label>
+      <input ng-model="editcomm.name">
+    </md-input-container>
+    <md-input-container>
+      <label>Localidad</label>
+      <input ng-model="editcomm.location">
+    </md-input-container>
+    <md-input-container>
+      <label>Actividad</label>
+      <input ng-model="editcomm.activity">
+    </md-input-container>
+    <md-input-container>
+      <label>Web</label>
+      <input ng-model="editcomm.web">
+    </md-input-container>
+    <md-input-container>
+      <label>Email</label>
+      <input ng-model="editcomm.email">
+    </md-input-container>
+    <md-input-container>
+      <label>Dirección</label>
+      <input ng-model="editcomm.address">
+    </md-input-container>
+    <md-input-container>
+      <label>Descripción</label>
+      <input ng-model="editcomm.description">
+    </md-input-container>
+    <md-input-container>
+      <label>Teléfono</label>
+      <input ng-model="editcomm.phone">
+    </md-input-container>
+    <md-input-container>
+      <label>GPS</label>
+      <input ng-model="editcomm.gps">
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click="editComm()">Añadir</md-button>
+  </form>
+</div>

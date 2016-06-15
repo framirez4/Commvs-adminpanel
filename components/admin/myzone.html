@@ -2,8 +2,7 @@
   <div layout="column">
     <div layout-fill="" layout-align="top center">
       <md-list>
-        <md-subheader class="md-no-sticky">Commercios favoritos</md-subheader>
-
+        <md-subheader class="md-no-sticky">Available Comms at {{geolocation}}</md-subheader>
         <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
           <img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">
           <div class="md-list-item-text" layout="column">
@@ -11,13 +10,7 @@
             <h4>{{ comm.location }}</h4>
             <p>{{ comm.description }}</p>
           </div>
-          <div ng-show="$state.includes('home.main.comms.list')">
-            <md-button class="md-primary" ng-click="toggleStar(comm._id)" aria-label="Star">
-              <md-icon ng-show="favs && favs.indexOf(comm._id) != -1" class="material-icons md-18">star</md-icon>
-              <md-icon ng-show="favs && favs.indexOf(comm._id) == -1" class="material-icons md-18">star_border</md-icon>
-            </md-button>
-          </div>
-          <div ng-show="$state.includes('home.main.comms.list')">
+          <div>
             <md-button class="md-warn" ng-click="deleteComm(comm._id)" aria-label="Delete" ng-show="role === 'admin'">
               <md-icon class="material-icons md-18">delete</md-icon>
             </md-button>
@@ -27,16 +20,13 @@
               <md-icon class="material-icons md-18">vpn_key</md-icon>
             </md-button>
           </div>
-          <div ng-show="$state.includes('home.main.owners.list')">
-            <md-button class="md-warn" ng-click="deleteCode(comm._id)" aria-label="RemoveOwn" >
-              <md-icon class="material-icons md-18">block</md-icon>
-            </md-button>
-          </div>
-
         </md-list-item>
+
+
 
       </md-list>
     </div>
+
   </div>
 
 

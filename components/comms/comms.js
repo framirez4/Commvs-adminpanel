@@ -60,6 +60,15 @@
         $scope.getComms();
       })
     };
+    $scope.editComm = function() {
+      console.log($scope.editcomm);
+      CommFactory.edit(store.get('jwt'), $scope.editcomm)
+      .then(function(data){
+        console.log(data);
+        if(data.data.success) $state.go('home.main.owners.list');
+      });
+    }
+
 
     $scope.deleteComm = function(id) {
       CommFactory.delete(store.get('jwt'), id)

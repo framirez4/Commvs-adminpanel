@@ -1,15 +1,27 @@
 <md-content flex>
-  <md-button ng-click="close()" class="md-primary" hide-gt-sm="" aria-label="close sidenav">
-    <i class="fa fa-times"></i>
-  </md-button>
-  <md-toolbar layout="row" class="md-hue-1">
-    <div class="md-toolbar-tools">
-      <span>Nombre y correo</span>
+
+  <!-- User label only if logged -->
+  <md-toolbar ng-show="isLogged" layout="row" style="height:100px;" layout-align="center center" class="md-hue-1" hide-gt-sm>
+    <div class="md-toolbar-tools" layout-align="start center">
+      <span class="fa-stack">
+        <i class="fa fa-circle fa-stack-2x" style="color:#222"></i>
+        <i class="fa fa-user fa-stack-1x"></i>
+      </span>
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <h4 class="text-white">{{first_name}} {{last_name}}</h4>
+            <p class="text-white">{{_id}}</p>
+          </div>
+        </md-list-item>
+      </md-list>
     </div>
   </md-toolbar>
+  <button type="button" class="close" aria-label="Close" ng-click="close()" hide-gt-sm><span aria-hidden="true">&times;</span></button>
+
   <md-content id="sidenav-menu">
     <ul flex class="side-menu">
-      <li class="md-3-line " ng-repeat="section in sections" ui-sref="{{section.state}}" ui-sref-active="active" ng-click="close()">
+      <li class="md-3-line " ng-repeat="section in sections" ui-sref="{{section.state}}" ui-sref-active="active" ng-click="close()" ng-hide="(!isLogged && section.logged) || (!isAdmin && section.admOpt)">
           <i class="material-icons">{{section.icon}}</i><span>&nbsp;{{section.name}}</span>
       </li>
 

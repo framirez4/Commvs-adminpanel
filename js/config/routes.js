@@ -11,9 +11,36 @@
 
       $urlRouterProvider.otherwise('/');
 
+
       $stateProvider
+        .state('login', { // Login frame. includes a :dest if specified to redirect after logging in.
+          url: '/login/:dest',
+          views: {
+            "":{
+              templateUrl: '../components/login/login.html',
+              controller: 'LoginController'
+            }
+          }
+        })
+
+        // Signup form page.
+        .state('signup', {
+          url: '/signup',
+          views: {
+            "":{
+              templateUrl: '../components/signup/signup.html',
+              controller: 'SignupController'
+            }
+          }
+        })
+
+
+        // Main frame
+        // Contains home.main, all pages apply here.
+        // Includes Toolbar view and Sidenav views.
         .state('home', {
-          templateUrl: '../components/home/home.html'
+          templateUrl: '../components/home/home.html',
+          controller: 'HomeController'
         })
         .state('home.main', {
           url: '/',
@@ -31,7 +58,10 @@
             }
           }
         })
+
+        // Comms main frame
         .state('home.main.comms', {
+          url: 'comms',
           views:{
             "": {
               templateUrl: '../components/comms/comms.html',
@@ -39,30 +69,29 @@
             }
           }
         })
-        .state('home.main.comms.list', {
-          url: 'comms',
+        .state('home.main.comms.comm', {
+          url: '/:comm',
           views:{
             "": {
-              templateUrl: '../components/comms/commslist.html'
+              templateUrl: '../components/comms/commsinfo.html',
+              controller: 'CommsDetailController'
             }
           }
         })
+
+        // Favs main frame
         .state('home.main.favs', {
+          url: 'favs',
           views:{
             "": {
               templateUrl: '../components/favs/favs.html',
               controller: 'FavsController'
             }
-          }
+          },
+          data: { requiresLogin: true }
         })
-        .state('home.main.favs.list', {
-          url: 'favs',
-          views:{
-            "": {
-              templateUrl: '../components/comms/commslist.html'
-            }
-          }
-        })
+
+        // Promos main frame
         .state('home.main.promos', {
           url: 'promos',
           views:{
@@ -72,6 +101,8 @@
             }
           }
         })
+
+      // Owners main frame
         .state('home.main.owners', {
           url: 'owners',
           views:{
@@ -79,8 +110,11 @@
               templateUrl: '../components/owners/owners.html',
               controller: 'OwnersController'
             }
-          }
+          },
+          data: { requiresLogin: true }
         })
+
+
         .state('home.main.owners.newprop', {
           url: '/add_new',
           views:{
@@ -88,7 +122,8 @@
               templateUrl: '../components/owners/newprop.html',
               controller: 'OwnersController'
             }
-          }
+          },
+          data: { requiresLogin: true }
         })
         .state('home.main.owners.list', {
           url: '/list',
@@ -97,8 +132,21 @@
               templateUrl: '../components/owners/commslist.html',
               controller: 'OwnersController'
             }
-          }
+          },
+          data: { requiresLogin: true }
         })
+        .state('home.main.owners.editor', {
+          url: '/:comm/editor',
+          views:{
+            "": {
+              templateUrl: '../components/owners/commeditor.html',
+              controller: 'CommsController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+
+      // Account settings tab
         .state('home.main.settings', {
           url: 'settings',
           views:{
@@ -109,8 +157,22 @@
           },
           data: { requiresLogin: true }
         })
-        .state('home.main.users', {
-          url: 'users',
+
+
+      // Admin tabs
+
+        .state('home.main.admin', {
+          url: 'admin',
+          views:{
+            "": {
+              templateUrl: '../components/admin/admin.html',
+              controller: 'AdminPanelController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+        .state('home.main.admin.users', {
+          url: '/users',
           views:{
             "": {
               templateUrl: '../components/users/users.html',
@@ -119,24 +181,24 @@
           },
           data: { requiresLogin: true }
         })
-        .state('login', {
-          url: '/login/:dest',
+        .state('home.main.admin.comm_creator', {
+          url: '/comm_creator',
           views: {
-            "":{
-              templateUrl: '../components/login/login.html',
-              controller: 'LoginController'
+            "": {
+              templateUrl: '../components/comms/commscreate.html',
+              controller: 'CommsController'
             }
           }
         })
-        .state('signup', {
-          url: '/signup',
+        .state('home.main.admin.my_zone', {
+          url: '/mi_zona',
           views: {
-            "":{
-              templateUrl: '../components/signup/signup.html',
-              controller: 'SignupController'
+            "": {
+              templateUrl: '../components/admin/myzone.html',
+              controller: 'CommsController'
             }
           }
-        });
+        })
 
         //$locationProvider.html5Mode({
         //  enabled: true,
