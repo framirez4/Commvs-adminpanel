@@ -1,0 +1,52 @@
+<md-button class="md-raised" ui-sref="main.owners.list">Volver a la lista</md-button>
+  <form name="newCommForm" layout="column" flex class="md-inline-form">
+    <div layout-gt-sm="row" flex>
+      <md-input-container>
+        <label>Nombre</label>
+        <input ng-model="editComm.name">
+      </md-input-container>
+      <md-input-container>
+        <label>Actividad</label>
+        <input ng-model="editComm.activity">
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row" flex>
+      <md-input-container>
+        <label>Dirección</label>
+        <input ng-model="editComm.address" disabled>
+      </md-input-container>
+      <md-input-container>
+        <label>Localidad</label>
+        <input ng-model="editComm.location" disabled>
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row" flex>
+      <md-input-container>
+        <label>Web</label>
+        <input ng-model="editComm.web">
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input ng-model="editComm.email">
+      </md-input-container>
+      <md-input-container>
+        <label>Teléfono</label>
+        <input ng-model="editComm.phone">
+      </md-input-container>
+      <md-input-container>
+        <label>GPS</label>
+        <input ng-model="editComm.gps">
+      </md-input-container>
+    </div>
+
+    <div layout="row">
+      <md-input-container class="md-block" style="width:100%;">
+        <label>Descripción</label>
+        <textarea rows="5" md-maxlength="300" ng-model="editComm.description"></textarea>
+      </md-input-container>
+    </div>
+    <p class="success" ng-show="editSuccess">
+      {{editSuccess}}
+    </p>
+    <md-button class="md-raised md-primary" ng-click="editData()">Guardar cambios</md-button>
+  </form>

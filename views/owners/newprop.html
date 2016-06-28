@@ -1,0 +1,42 @@
+<div>
+  <h4>Añadir Comercios</h4>
+  <p>
+    Si tienes un código de propietario de comercio entregado por el administrador de tu zona, introducelo a continuación:
+  </p>
+  <md-content layout-padding layout="column">
+    <form ng-submit="$event.preventDefault()">
+      <md-input-container>
+        <label>Ciudad</label>
+        <input type="text" ng-model="searchLoc">
+      </md-input-container>
+
+      <md-autocomplete
+        md-item-text="item.name"
+        md-items="item in searchData"
+        md-search-text-change="querySearch(searchText)"
+        md-search-text="searchText"
+        md-selected-item="selectedItem"
+        md-no-cache="noCache"
+        md-input-name="autocompleteField"
+        required="">
+        <md-item-template>
+          <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+          <span>{{item._id}}</span>
+          <span>{{item.location}}</span>
+        </md-item-template>
+      </md-autocomplete>
+      <md-input-container>
+        <label>Código de propietario</label>
+        <input type="text" ng-model="owner.code">
+      </md-input-container>
+      <md-button type="submit" class="md-raised md-primary" ng-click="submitCode()">Aceptar</md-button>
+    </form>
+  </md-content>
+  <div>
+    <p>
+      Si aún no has recibido un código para empezar a administrar tu comercio, ponte en contacto con el administrador de tu zona.
+    </p>
+    <md-button class="md-raised" ui-sref="main.owners.list"><i class="fa fa-chevron-circle-left"></i>&nbsp;Atrás</md-button>
+
+  </div>
+</div>

@@ -19,7 +19,8 @@
     'controller.owners',
     'controller.favs',
     'controller.admin',
-    'controller.commdetail'
+    'controller.commdetail',
+    'controller.commeditor'
   ])
   .run( function($rootScope, jwtHelper, $state, store) {
     $rootScope.$state = $state;
@@ -33,6 +34,8 @@
         $rootScope.first_name = store.get('user.first_name');
         $rootScope.last_name = store.get('user.last_name');
         $rootScope._id = store.get('user._id');
+        $rootScope.favs = store.get("user.favs");
+        $rootScope.owns = store.get("user.owns");
         if(store.get('user.role') === 'admin') $rootScope.isAdmin = true;
       }
 
@@ -40,7 +43,7 @@
       if( to.data && to.data.requiresLogin ) {
         if( !store.get('jwt') || jwtHelper.isTokenExpired(store.get('jwt'))) {
           e.preventDefault();
-          $state.go('login', { dest: to.name });
+          $state.go('main.login', { dest: to.name });
         }
       }
     });

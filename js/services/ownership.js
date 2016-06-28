@@ -6,10 +6,10 @@ angular.module('factory.own', ['kapeloi.config'])
 
 function OwnershipFactory($http, hostServer){
   return {
-    get: function(jwt, id) {
+    get: function(jwt, comm_id) {
       return $http({
         method: 'GET',
-        url: hostServer + '/ownership/' + id,
+        url: hostServer + '/ownership/' + comm_id,
         headers: {'x-access-token': jwt }
       });
     },

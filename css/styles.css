@@ -45,10 +45,10 @@ md-toolbar h3 {
 }
 md-content .card-e {
   padding: 15px;
-  background-color: #eee;
+  min-width: 400px;
 }
 .login-card {
-      text-align: center;
+      background-color: #eeeeee;
 }
 
 md-toolbar h3 {
@@ -57,8 +57,71 @@ md-toolbar h3 {
 }
 
 md-list-item > button {
+  width: 100%;
+  text-align: left !important;
+}
+
+.mainframe {
+  background-color: #eeeeee;
+}
+.main-block {
+  width:85%;
+}
+
+@media (max-width: 479px ) {
+  .mainframe-card {
+    min-width: 310px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin:15px;
+    transition: height 2s;
+
+  }
+  .mainframe-comms {
+    /*min-width:460px;*/
+  }
+}
+@media (min-width: 480px ) {
+  .mainframe-card {
+    width: 400px;
+    padding-left:40px;
+    padding-right:40px;
+    padding-top:40px;
+    padding-bottom:40px;
+    margin:40px;
+  }
+  .mainframe-comms {
+    min-width:460px;
+    padding:
+  }
+}
+
+
+.mainframe md-whiteframe {
+  background-color: #fff;
+  margin-top: 40px;
+  margin-bottom:40px;
+  margin-left:15px;
+  margin-right:15px;
+  padding-left:15px;
+  padding-right:15px;
+}
+.shop-header {
+  padding-top:15px;
+  padding-bottom:15px;
+  display: inline-flex;
+}
+.shop-content {
+  padding-bottom:15px;
   width:100%;
-  text-align:left !important;
+}
+.shop-title {
+  color: #222;
+  font-size: 24px;
+  font-family: 'Cinzel', serif;
+  padding: 8px;
 }
 
 #content  {
@@ -101,6 +164,13 @@ p.error {
   background-color: rgba(255,0,0, 0.1);
   color: red;
   border: solid red 1px;
+  border-radius: 4px;
+}
+p.success {
+  padding: 8px;
+  background-color: rgba(87, 153, 4, 0.1);
+  color: green;
+  border: solid green 1px;
   border-radius: 4px;
 }
 .serv-title {

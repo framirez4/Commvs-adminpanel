@@ -3,7 +3,7 @@
 
   <head>
     <title ng-bind="pageTitle"></title>
-
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/" />
 
@@ -19,25 +19,26 @@
     <script type="text/javascript" src="./bower_components/angular-aria/angular-aria.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-messages/angular-messages.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
-    <script type="text/javascript"src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="./bower_components/a0-angular-storage/dist/angular-storage.min.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
 
     <script type="text/javascript" src="js/app.js"></script>
 
-    <script type="text/javascript" src="components/login/login.js"></script>
-    <script type="text/javascript" src="components/signup/signup.js"></script>
-    <script type="text/javascript" src="components/home/home.js"></script>
-    <script type="text/javascript" src="components/toolbar/toolbar.js"></script>
-    <script type="text/javascript" src="components/sidenav/sidenav.js"></script>
-    <script type="text/javascript" src="components/settings/settings.js"></script>
-    <script type="text/javascript" src="components/comms/comms.js"></script>
-    <script type="text/javascript" src="components/comms/commdetail.js"></script>
-    <script type="text/javascript" src="components/users/users.js"></script>
-    <script type="text/javascript" src="components/promos/promos.js"></script>
-    <script type="text/javascript" src="components/owners/owners.js"></script>
-    <script type="text/javascript" src="components/favs/favs.js"></script>
-    <script type="text/javascript" src="components/admin/admin.js"></script>
+    <script type="text/javascript" src="js/controllers/login.js"></script>
+    <script type="text/javascript" src="js/controllers/signup.js"></script>
+    <script type="text/javascript" src="js/controllers/home.js"></script>
+    <script type="text/javascript" src="js/controllers/toolbar.js"></script>
+    <script type="text/javascript" src="js/controllers/sidenav.js"></script>
+    <script type="text/javascript" src="js/controllers/settings.js"></script>
+    <script type="text/javascript" src="js/controllers/comms.js"></script>
+    <script type="text/javascript" src="js/controllers/commdetail.js"></script>
+    <script type="text/javascript" src="js/controllers/users.js"></script>
+    <script type="text/javascript" src="js/controllers/promos.js"></script>
+    <script type="text/javascript" src="js/controllers/owners.js"></script>
+    <script type="text/javascript" src="js/controllers/commEditor.js"></script>
+    <script type="text/javascript" src="js/controllers/favs.js"></script>
+    <script type="text/javascript" src="js/controllers/admin.js"></script>
 
     <script type="text/javascript" src="js/services/user.js"></script>
     <script type="text/javascript" src="js/services/comm.js"></script>
@@ -52,7 +53,12 @@
 
   </head>
 
-  <body layout="column" ui-view flex>
+  <body layout="column" flex>
+    <md-toolbar layout="row" ui-view="toolbar" layout-align="center center"></md-toolbar>
+    <div layout="row" flex>
+      <md-sidenav ui-view="sidenav" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="4"></md-sidenav>
+      <div ui-view="mainframe" layout="row" layout-align="center start" class="mainframe" flex></div>
+    </div>
 
   </body>
 

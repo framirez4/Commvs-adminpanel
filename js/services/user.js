@@ -22,23 +22,39 @@
           data: user
         });
       },
-      put: function(jwt, password) {
-        console.log(password);
-        return $http({
-          method: 'PUT',
-          url: hostServer + '/users',
-          headers: {'x-access-token': jwt },
-          data: password
-        });
-      },
       // Delete a user by id
       delete: function(jwt, email) {
-        console.log(email);
         return $http({
           method: 'DELETE',
           url: hostServer + '/users',
           headers: {'x-access-token': jwt },
           params: email
+        });
+      },
+
+      //me
+      //get
+      meget: function(jwt) {
+        return $http({
+          method: 'GET',
+          url: hostServer + '/users/me',
+          headers: { 'x-access-token': jwt}
+        });
+      },
+      meprof: function(jwt, user) {
+        return $http({
+          method: 'PUT',
+          url: hostServer + '/users/me/profile',
+          headers: { 'x-access-token': jwt },
+          data: user
+        });
+      },
+      mepass: function(jwt, password) {
+        return $http({
+          method: 'PUT',
+          url: hostServer + '/users/me/password',
+          headers: { 'x-access-token': jwt },
+          data: password
         });
       }
     };

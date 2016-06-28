@@ -27,10 +27,10 @@
           data: comm_obj
         });
       },
-      edit: function(jwt, comm_obj) {
+      edit: function(jwt, comm_id, comm_obj) {
         return $http({
           method: 'PUT',
-          url: hostServer + '/comms/bigues_essencial',
+          url: hostServer + '/comms/' + comm_id,
           headers: {'x-access-token': jwt },
           data: comm_obj
         });

@@ -1,0 +1,35 @@
+<div layout="row" flex>
+  <div flex>
+    <h4>Mis comercios</h4>
+  </div>
+  <div flex layout-align="end center" class="text-right">
+    <md-button class="md-raised md-primary" ui-sref="main.owners.newprop">Añadir propiedad</md-button>
+  </div>
+</div>
+
+<div ng-hide="comms.length" layout="column" layout-align="center center">
+  <h2 style="color: #aaa">Aún no tienes comercios disponibles.</h2>
+  <div flex>
+    <p>
+      Si aún no has recibido un código para empezar a administrar tu comercio, ponte en contacto con el administrador de tu zona.
+      Sigue las instrucciones a continuación para introducir un nuevo comercio.
+    </p>
+    <md-button class="md-raised md-primary" ui-sref="main.owners.newprop">Añadir una nueva propiedad</md-button>
+  </div>
+</div>
+<md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
+  <div class="md-list-item-text" layout="column" flex>
+    <h3>{{ comm.name }}</h3>
+    <h4>{{ comm.address }} | {{ comm.location }}</h4>
+  </div>
+  <div layout="column">
+    <md-button class="md-raised" ui-sref="main.owners.editor({comm_id: comm._id})">Editar datos</md-button>
+    <!--<md-button class="md-raised">Editar promociones</md-button>-->
+    <md-button class="md-raised" ng-click="getOwnerkey(comm._id, $event)"><md-icon class="material-icons md-18">vpn_key</md-icon>&nbsp;Consultar clave</md-button>
+  </div>
+  <div>
+    <md-button class="md-warn" ng-click="deleteCode(comm._id)" aria-label="RemoveOwn" >
+      <md-icon class="material-icons md-18">block</md-icon>
+    </md-button>
+  </div>
+</md-list-item>

@@ -1,0 +1,25 @@
+<md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout layout-align="center center">
+  <md-content layout="column" layout-fill="" layout-align="start start">
+
+    <div class="shop-header" flex>
+      <md-button class="md-icon-button" ui-sref="main.comms" aria-label="Volver a comercios"><i class="material-icons">arrow_back</i></md-button>
+      <div class="shop-title">{{commDetail.name}}</div>
+      <div>
+        <md-button ng-show="isLogged" class="md-icon-button md-mini" ng-click="toggleStar(commDetail._id)" aria-label="Star">
+          <md-icon ng-show="favs && favs.indexOf(commDetail._id) != -1" class="material-icons md-18">star</md-icon>
+          <md-icon ng-show="favs && favs.indexOf(commDetail._id) == -1" class="material-icons md-18">star_border</md-icon>
+        </md-button>
+      </div>
+    </div>
+    <div class="shop-content" flex>
+      <h4>Actividad: </h4>  {{commDetail.activity}}
+      <h4>Detalles de contacto:</h4>
+      <ul>
+        <li>{{commDetail.phone}}</li>
+        <li>{{commDetail.address}}</li>
+        <li>{{commDetail.email}}</li>
+      </ul>
+      <h4>Descripción:</h4> {{commDetail.description}}
+    </div>
+  </md-content>
+</md-whiteframe>

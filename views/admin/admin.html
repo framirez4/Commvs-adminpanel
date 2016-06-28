@@ -1,0 +1,14 @@
+<div layout="column" layout-align="center center" flex>
+
+  <div ui-view flex>
+    <h1 class="serv-title">Kapeloi</h1>
+    <h4 class="serv-sub">Descubre la oferta de tiendas a tu alrededor</h4>
+
+    <md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout-padding layout-align="center center">
+      <div ng-repeat="button in buttons">
+        <md-button class="md-raised md-primary" ui-sref="{{button.addr}}">{{button.name}}</md-button>
+      </div>
+    </md-whiteframe>
+  </div>
+
+</div>

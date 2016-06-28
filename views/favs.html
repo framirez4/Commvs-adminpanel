@@ -1,0 +1,45 @@
+<md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout layout-align="center center">
+  <md-content flex id="content">
+    <div layout="column" layout-align="top center">
+      <md-list>
+        <md-subheader class="md-no-sticky">Commercios favoritos</md-subheader>
+        <div ng-hide="comms.length" layout="row" layout-align="center center">
+          <h2 style="color: #aaa">No hay comercios disponibles para mostrar en esta zona.</h2>
+        </div>
+        <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
+          <!--<img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">-->
+          <div>
+            <md-button ng-show="isLogged" class="md-icon-button md-mini" ng-click="toggleStar(comm._id)" aria-label="Star">
+              <md-icon ng-show="favs && favs.indexOf(comm._id) != -1" class="material-icons md-18">star</md-icon>
+              <md-icon ng-show="favs && favs.indexOf(comm._id) == -1" class="material-icons md-18">star_border</md-icon>
+            </md-button>
+          </div>
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ comm.name }} | {{ comm._id }}</h3>
+            <h4>{{ comm.location }}</h4>
+          </div>
+          <div>
+            <md-button class="md-raised md-primary md-mini" ui-sref="main.commDetail({comm_id: comm._id, comm: comm})">+Info</md-button>
+          </div>
+        </md-list-item>
+<!--
+          <div >
+            <md-button class="md-warn" ng-click="deleteComm(comm._id)" aria-label="Delete" ng-show="role === 'admin'">
+              <md-icon class="material-icons md-18">delete</md-icon>
+            </md-button>
+          </div>
+          <div >
+            <md-button class="md-primary" ng-click="getOwnerkey(comm._id, $event)" aria-label="Ownerkey" ng-show="role === 'admin'">
+              <md-icon class="material-icons md-18">vpn_key</md-icon>
+            </md-button>
+          </div>
+          <div ng-show="$state.includes('home.main.owners.list')">
+            <md-button class="md-warn" ng-click="deleteCode(comm._id)" aria-label="RemoveOwn" >
+              <md-icon class="material-icons md-18">block</md-icon>
+            </md-button>
+          </div>-->
+
+      </md-list>
+    </div>
+  </md-content>
+</md-whiteframe>

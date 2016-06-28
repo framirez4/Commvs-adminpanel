@@ -11,9 +11,177 @@
 
       $urlRouterProvider.otherwise('/');
 
-
       $stateProvider
-        .state('login', { // Login frame. includes a :dest if specified to redirect after logging in.
+        .state( 'main', {
+          views:{
+            "mainframe": {
+              templateUrl: '../views/mainframe/main.html'
+            },
+            "toolbar": {
+              templateUrl: '../../views/mainframe/toolbar.html',
+              controller: 'ToolbarController'
+            },
+            "sidenav": {
+              templateUrl: '../../views/mainframe/sidenav.html',
+              controller: 'SidenavController'
+            }
+          }
+        })
+        .state( 'main.home', {
+          url: '^/',
+          views:{
+            "": {
+              templateUrl: '../views/home.html',
+              controller: 'HomeController'
+            }
+          }
+        })
+        .state('main.comms', {
+          url: '^/comms',
+          params: {
+            position: {}
+          },
+          templateUrl: '../views/comms.html',
+          controller: 'CommsController'
+
+
+        })
+        .state( 'main.commDetail', {
+          url: '/comms/:comm_id',
+          params: {
+            comm: {}
+          },
+          views:{
+            "": {
+              templateUrl: '../views/commsinfo.html',
+              controller: 'CommsDetailController'
+            }
+          }
+        })
+        .state( 'main.login', {
+          url: '/login',
+          params: {
+            dest: '',
+            signupSuccess: {}
+          },
+          views:{
+            "": {
+              templateUrl: '../views/login.html',
+              controller: 'LoginController'
+            }
+          }
+        })
+        .state( 'main.signup', {
+          url: '/signup',
+          views:{
+            "": {
+              templateUrl: '../views/signup.html',
+              controller: 'SignupController'
+            }
+          }
+        })
+        .state( 'main.settings', {
+          url: '/settings',
+          views:{
+            "": {
+              templateUrl: '../views/settings.html',
+              controller: 'SettingsController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+        .state( 'main.favs', {
+          url: '/favs',
+          views:{
+            "": {
+              templateUrl: '../views/favs.html',
+              controller: 'FavsController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+        .state( 'main.owners', {
+          views:{
+            "": {
+              templateUrl: '../views/owners/owners.html',
+              controller: 'OwnersController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+        .state( 'main.owners.list', {
+          url: '/propietarios',
+          views:{
+            "": {
+              templateUrl: '../views/owners/commslist.html',
+              controller: 'OwnersController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+        .state( 'main.owners.newprop', {
+          url: '/propietarios/nuevo',
+          views:{
+            "": {
+              templateUrl: '../views/owners/newprop.html',
+              controller: 'OwnersController'
+            }
+          },
+          data: { requiresLogin: true }
+        })
+        .state( 'main.owners.editor', {
+          url: '/propietarios/:comm_id/editor',
+          views:{
+            "": {
+              templateUrl: '../views/owners/commeditor.html',
+              controller: 'CommEditorController'
+            }
+          }
+        })
+
+        .state( 'main.admin', {
+          url: '/admin',
+          views:{
+            "": {
+              templateUrl: '../views/admin/admin.html',
+              controller: 'AdminPanelController'
+            }
+          }
+        })
+        .state( 'main.admin.users', {
+          url: '/users',
+          views:{
+            "": {
+              templateUrl: '../views/admin/users.html',
+              controller: 'UsersController'
+            }
+          }
+        })
+        .state( 'main.admin.comm_creator', {
+          url: '/comm_creator',
+          params: {
+            comm_id: ''
+          },
+          views:{
+            "": {
+              templateUrl: '../views/admin/commeditor.html',
+              controller: 'CommEditorController'
+            }
+          }
+        })
+        .state( 'main.admin.myZone', {
+          url: '/mi_zona',
+          views:{
+            "": {
+              templateUrl: '../views/admin/myzone.html',
+              controller: ''
+            }
+          }
+        })
+/*
+      $stateProvider
+        // Login frame. includes a :dest if specified to redirect after logging in.
+        .state('login', {
           url: '/login/:dest',
           views: {
             "":{
@@ -33,7 +201,6 @@
             }
           }
         })
-
 
         // Main frame
         // Contains home.main, all pages apply here.
@@ -199,7 +366,7 @@
             }
           }
         })
-
+*/
         //$locationProvider.html5Mode({
         //  enabled: true,
         //  requireBase: false

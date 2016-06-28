@@ -1,0 +1,53 @@
+<md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout-padding layout-align="center center">
+  <form name="newCommForm" layout="column" flex class="md-inline-form">
+    <div layout-gt-sm="row" flex>
+      <md-input-container>
+        <label>Nombre</label>
+        <input ng-model="newComm.name">
+      </md-input-container>
+      <md-input-container>
+        <label>Actividad</label>
+        <input ng-model="newComm.activity">
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row" flex>
+      <md-input-container>
+        <label>Dirección</label>
+        <input ng-model="newComm.address">
+      </md-input-container>
+      <md-input-container>
+        <label>Localidad</label>
+        <input ng-model="newComm.location">
+      </md-input-container>
+    </div>
+    <div layout-gt-sm="row" flex>
+      <md-input-container>
+        <label>Web</label>
+        <input ng-model="newComm.web" disabled>
+      </md-input-container>
+      <md-input-container>
+        <label>Email</label>
+        <input ng-model="newComm.email" disabled>
+      </md-input-container>
+      <md-input-container>
+        <label>Teléfono</label>
+        <input ng-model="newComm.phone" disabled>
+      </md-input-container>
+      <md-input-container>
+        <label>GPS</label>
+        <input ng-model="newComm.gps">
+      </md-input-container>
+    </div>
+
+    <div layout="row">
+      <md-input-container class="md-block" style="width:100%;">
+        <label>Descripción</label>
+        <textarea disabled rows="5" md-maxlength="300" ng-model="newComm.description"></textarea>
+      </md-input-container>
+    </div>
+    <p class="success" ng-show="addSuccess">
+      {{addSuccess}}
+    </p>
+    <md-button class="md-raised md-primary" ng-click="addComm()">Añadir comercio</md-button>
+  </form>
+</md-whiteframe>

@@ -1,0 +1,23 @@
+
+  <md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-card" layout layout-align="center center">
+    <form class="">
+      <md-input-container>
+      <label>Buscar tu ciudad</label>
+      <input type="text" required ng-model="city">
+    </md-input-container>
+    <md-button type="submit" ng-click="getCity()" class="md-fab md-primary md-hue-2 md-mini" aria-label="Buscar">
+      <i class="material-icons">search</i>
+    </md-button>
+    </form>
+    <md-divider></md-divider>
+    <md-button class="md-raised" ng-click="getPosition()" aria-label="Autodetectar">Autodetectar mi ubicación</md-button>
+    <p class="error" ng-show="geoError">
+      {{geoError}}
+    </p>
+    <div ng-show="position.address" >
+      <p><b>Proceder con esta dirección?</b></p>
+      <p>{{position.address}}</p>
+      <md-button ng-click="acceptFilter()" class="md-raised md-primary">Aceptar</md-button>
+    </div>
+
+  </md-whiteframe>

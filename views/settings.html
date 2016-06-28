@@ -1,0 +1,27 @@
+<md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout layout-align="center center">
+<md-content flex>
+  <h4>Cambiar el nombre</h4>
+  <md-input-container>
+    <label>Nuevo nombre</label>
+    <input type="text" ng-model="user_chn.first_name">
+  </md-input-container>
+  <md-input-container>
+    <label>Nuevo apellido</label>
+    <input type="text" ng-model="user_chn.last_name">
+  </md-input-container>
+  <md-button class="md-raised md-primary" ng-click="changeName()">Cambiar</md-button>
+    <h4>Cambio de contraseña</h4>
+    <md-input-container>
+      <label>Nueva contraseña</label>
+      <input type="password" ng-model="user_chp.password">
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click="changePass()">Cambiar</md-button>
+    <p ng-show="dataChange" class="success">
+      {{dataChange}}
+    </p>
+    <p ng-show="dataFail" class="error">
+      {{dataFail}}
+    </p>
+
+</md-content>
+</md-whiteframe>

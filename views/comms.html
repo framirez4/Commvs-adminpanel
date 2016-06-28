@@ -1,0 +1,36 @@
+<!--<md-toolbar class="md-primary" layout="row">
+  <p flex>
+    buscador
+  </p>
+  <md-icon class="material-icons">search</md-icon>
+</md-toolbar>
+-->
+  <md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout layout-align="center center">
+    <md-content layout="column" layout-fill="" layout-align="top center">
+        <md-list>
+          <md-subheader class="md-no-sticky">Comercios disponibles en {{address_available}}</md-subheader>
+          <div ng-hide="comms.length" layout="row" layout-align="center center">
+            <h2 style="color: #aaa">No hay comercios disponibles para mostrar en esta zona.</h2>
+          </div>
+          <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
+            <!--<img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">-->
+            <div>
+              <md-button ng-show="isLogged" class="md-icon-button md-mini" ng-click="toggleStar(comm._id)" aria-label="Star">
+                <md-icon ng-show="favs && favs.indexOf(comm._id) != -1" class="material-icons md-18">star</md-icon>
+                <md-icon ng-show="favs && favs.indexOf(comm._id) == -1" class="material-icons md-18">star_border</md-icon>
+              </md-button>
+            </div>
+            <div class="md-list-item-text" layout="column" flex>
+              <h3>{{ comm.name }} | <small>{{ comm._id }}</small></h3>
+              <h4>{{ comm.location }}</h4>
+            </div>
+            <div>
+              <md-button class="md-raised md-primary md-mini" ui-sref="main.commDetail({comm_id: comm._id, comm: comm})">+Info</md-button>
+            </div>
+
+            <div ui-view="comminfo"></div>
+            <md-divider ng-if="!$last"></md-divider>
+          </md-list-item>
+        </md-list>
+    </md-content>
+  </md-whiteframe>
