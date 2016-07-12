@@ -34,7 +34,12 @@
           store.set('user.favs', decoded.favs);
           store.set('user.owns', decoded.owns);
 
-          if(!$stateParams.dest) $stateParams.dest = 'main.comms'
+          // if user is an admin, go to main.admin, else main.comms:
+          if(store.get("user.role") === 'admin'){
+            $stateParams.dest = 'main.admin';
+          } else if(!$stateParams.dest){
+            $stateParams.dest = 'main.comms';
+          }
           $state.go($stateParams.dest, {}, {reload: true});
         } else {
           $scope.loginErr = response.data.message;

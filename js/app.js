@@ -20,7 +20,9 @@
     'controller.favs',
     'controller.admin',
     'controller.commdetail',
-    'controller.commeditor'
+    'controller.commeditor',
+    'controller.signupadmin',
+    'controller.myZone'
   ])
   .run( function($rootScope, jwtHelper, $state, store) {
     $rootScope.$state = $state;

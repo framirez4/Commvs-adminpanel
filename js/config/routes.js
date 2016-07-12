@@ -140,11 +140,20 @@
         })
 
         .state( 'main.admin', {
-          url: '/admin',
+          url: '^/admin',
           views:{
             "": {
               templateUrl: '../views/admin/admin.html',
               controller: 'AdminPanelController'
+            }
+          }
+        })
+        .state( 'main.admin.signupadmin', {
+          url: '/signupadmin',
+          views:{
+            "": {
+              templateUrl: '../views/admin/signup.html',
+              controller: 'SignupAdminController'
             }
           }
         })
@@ -174,10 +183,10 @@
           views:{
             "": {
               templateUrl: '../views/admin/myzone.html',
-              controller: ''
+              controller: 'myZoneController'
             }
           }
-        })
+        });
 /*
       $stateProvider
         // Login frame. includes a :dest if specified to redirect after logging in.

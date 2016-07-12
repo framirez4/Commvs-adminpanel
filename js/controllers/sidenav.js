@@ -14,7 +14,7 @@ function SidenavController ($rootScope, $scope, $mdSidenav, $state, store) {
     $scope.sections = [
       {icon: 'account_box', name: "Inicio", state: 'main.admin', logged: true },
       {icon: 'store', name: 'Crear nuevo comercio', state: 'main.admin.comm_creator', logged: true },
-      {icon: 'account_box', name: 'Crear nuevo administrador', state: '#', logged: true},
+      {icon: 'account_box', name: 'Crear nuevo administrador', state: 'main.admin.signupadmin', logged: true},
       {icon: 'store', name: 'Administrar mi zona', state: 'main.admin.myZone', logged: true},
       {icon: 'account_box', name: 'Administrar usuarios', state: 'main.admin.users', logged: true},
       {icon: 'settings', name: "Configuracion", state: 'main.settings', logged: true }
@@ -30,7 +30,24 @@ function SidenavController ($rootScope, $scope, $mdSidenav, $state, store) {
   }
 
 
-
+  $scope.logout = function(){
+    store.remove('jwt');
+    store.remove('user.role');
+    store.remove('user.favs');
+    store.remove('user.owns');
+    store.remove('user._id');
+    store.remove('user.first_name');
+    store.remove('user.last_name');
+    store.remove('token.created');
+    delete $rootScope.first_name;
+    delete $rootScope.last_name;
+    delete $rootScope._id;
+    $rootScope.isLogged = false;
+    $rootScope.isAdmin = false;
+    location.reload();
+    $state.go('main.comms', {}, { reload: true });
+  };
+  
   $scope.close = function () {
     if($mdSidenav('left').isOpen()){
       $mdSidenav('left').close();

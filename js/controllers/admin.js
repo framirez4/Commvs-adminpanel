@@ -7,8 +7,8 @@
 
   function AdminPanelController($scope, store, $state){
     $scope.buttons = [
-      {name: 'Crear nuevo comercio', addr: 'main.admin.newComm'},
-      {name: 'Crear nuevo administrador', addr: 'main.admin.newAdmin'},
+      {name: 'Crear nuevo comercio', addr: 'main.admin.comm_creator'},
+      {name: 'Crear nuevo administrador', addr: 'main.admin.signupadmin'},
       {name: 'Administrar mi zona', addr: 'main.admin.myZone'},
       {name: 'Administrar usuarios', addr: 'main.admin.users'},
 

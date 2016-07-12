@@ -1,7 +1,7 @@
 <md-content flex>
 
   <!-- User label only if logged -->
-  <md-toolbar ng-show="isLogged" layout="row" style="height:100px;" layout-align="center center" class="md-hue-1" hide-gt-sm>
+  <md-toolbar ng-show="isLogged" layout="column" style="height:100px;" layout-align="center center" class="md-hue-1" hide-gt-sm>
     <div class="md-toolbar-tools" layout-align="start center">
       <span class="fa-stack">
         <i class="fa fa-circle fa-stack-2x" style="color:#222"></i>
@@ -16,7 +16,16 @@
         </md-list-item>
       </md-list>
     </div>
+    <md-button class="md-raised" ng-click="logout() && close()">Cerrar sesión</md-button>
   </md-toolbar>
+
+  <md-toolbar ng-hide="isLogged" layout="column" style="height:100px;" layout-align="center center" class="md-hue-1" hide-gt-xs >
+    <div class="md-toolbar-tools" ng-hide="isLogged" layout-align="end center" flex>
+      <a ui-sref="main.login" ng-click="close()"><h6>Iniciar sesión</h6></a> <md-button class="md-raised" aria-label="signup" ui-sref="main.signup" ng-click="close()">Registrate</md-button>
+    </div>
+  </md-toolbar>
+
+
   <button type="button" class="close" aria-label="Close" ng-click="close()" hide-gt-sm><span aria-hidden="true">&times;</span></button>
 
   <md-content id="sidenav-menu">
