@@ -15,14 +15,14 @@
         .state( 'main', {
           views:{
             "mainframe": {
-              templateUrl: '../views/mainframe/main.html'
+              templateUrl: 'views/mainframe/main.html'
             },
             "toolbar": {
-              templateUrl: '../../views/mainframe/toolbar.html',
+              templateUrl: 'views/mainframe/toolbar.html',
               controller: 'ToolbarController'
             },
             "sidenav": {
-              templateUrl: '../../views/mainframe/sidenav.html',
+              templateUrl: 'views/mainframe/sidenav.html',
               controller: 'SidenavController'
             }
           }
@@ -31,7 +31,7 @@
           url: '^/',
           views:{
             "": {
-              templateUrl: '../views/home.html',
+              templateUrl: 'views/home.html',
               controller: 'HomeController'
             }
           }
@@ -41,7 +41,7 @@
           params: {
             position: {}
           },
-          templateUrl: '../views/comms.html',
+          templateUrl: 'views/comms.html',
           controller: 'CommsController'
 
 
@@ -53,7 +53,7 @@
           },
           views:{
             "": {
-              templateUrl: '../views/commsinfo.html',
+              templateUrl: 'views/commsinfo.html',
               controller: 'CommsDetailController'
             }
           }
@@ -66,7 +66,7 @@
           },
           views:{
             "": {
-              templateUrl: '../views/login.html',
+              templateUrl: 'views/login.html',
               controller: 'LoginController'
             }
           }
@@ -75,7 +75,7 @@
           url: '/signup',
           views:{
             "": {
-              templateUrl: '../views/signup.html',
+              templateUrl: 'views/signup.html',
               controller: 'SignupController'
             }
           }
@@ -84,7 +84,7 @@
           url: '/settings',
           views:{
             "": {
-              templateUrl: '../views/settings.html',
+              templateUrl: 'views/settings.html',
               controller: 'SettingsController'
             }
           },
@@ -94,7 +94,7 @@
           url: '/favs',
           views:{
             "": {
-              templateUrl: '../views/favs.html',
+              templateUrl: 'views/favs.html',
               controller: 'FavsController'
             }
           },
@@ -103,7 +103,7 @@
         .state( 'main.owners', {
           views:{
             "": {
-              templateUrl: '../views/owners/owners.html',
+              templateUrl: 'views/owners/owners.html',
               controller: 'OwnersController'
             }
           },
@@ -113,7 +113,7 @@
           url: '/propietarios',
           views:{
             "": {
-              templateUrl: '../views/owners/commslist.html',
+              templateUrl: 'views/owners/commslist.html',
               controller: 'OwnersController'
             }
           },
@@ -123,7 +123,7 @@
           url: '/propietarios/nuevo',
           views:{
             "": {
-              templateUrl: '../views/owners/newprop.html',
+              templateUrl: 'views/owners/newprop.html',
               controller: 'OwnersController'
             }
           },
@@ -133,7 +133,7 @@
           url: '/propietarios/:comm_id/editor',
           views:{
             "": {
-              templateUrl: '../views/owners/commeditor.html',
+              templateUrl: 'views/owners/commeditor.html',
               controller: 'CommEditorController'
             }
           }
@@ -143,7 +143,7 @@
           url: '^/admin',
           views:{
             "": {
-              templateUrl: '../views/admin/admin.html',
+              templateUrl: 'views/admin/admin.html',
               controller: 'AdminPanelController'
             }
           }
@@ -152,7 +152,7 @@
           url: '/signupadmin',
           views:{
             "": {
-              templateUrl: '../views/admin/signup.html',
+              templateUrl: 'views/admin/signup.html',
               controller: 'SignupAdminController'
             }
           }
@@ -161,7 +161,7 @@
           url: '/users',
           views:{
             "": {
-              templateUrl: '../views/admin/users.html',
+              templateUrl: 'views/admin/users.html',
               controller: 'UsersController'
             }
           }
@@ -173,7 +173,7 @@
           },
           views:{
             "": {
-              templateUrl: '../views/admin/commeditor.html',
+              templateUrl: 'views/admin/commeditor.html',
               controller: 'CommEditorController'
             }
           }
@@ -182,7 +182,7 @@
           url: '/mi_zona',
           views:{
             "": {
-              templateUrl: '../views/admin/myzone.html',
+              templateUrl: 'views/admin/myzone.html',
               controller: 'myZoneController'
             }
           }
