@@ -73,10 +73,10 @@
         $mdDialog.show(
           $mdDialog.alert()
             .clickOutsideToClose(true)
-            .title('Ownership key for ' + data.data.name)
-            .textContent('Key: ' + data.data.ownership.key)
+            .title('Clave de propiedad para ' + data.data.name)
+            .textContent('Clave: ' + data.data.ownership.key)
             .ariaLabel('Ownership dialog')
-            .ok('Got it!')
+            .ok('Aceptar')
             .targetEvent(ev)
         );
       });

@@ -24,7 +24,12 @@
         // Asks for commerces according to data obtained from home.
         CommFactory.get(position.cityLocation.lat, position.cityLocation.lng)
         .then(function(data) {
-          $scope.comms = data.data;
+          if(!data.data){
+            $scope.emptyCommList = true;
+          } else {
+            $scope.comms = data.data;
+          }
+
         });
     };
 

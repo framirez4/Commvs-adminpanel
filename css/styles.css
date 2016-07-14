@@ -16,6 +16,9 @@ html, body {
 .text-right{
   text-align: right;
 }
+.text-center {
+  text-align: center;
+}
 .text-left{
   text-align: left;
 }
@@ -43,10 +46,7 @@ md-toolbar {
 md-toolbar h3 {
   font-family: 'Cinzel', serif;
 }
-md-content .card-e {
-  padding: 15px;
-  min-width: 400px;
-}
+
 .login-card {
       background-color: #eeeeee;
 }
@@ -82,6 +82,9 @@ md-list-item > button {
   .mainframe-comms {
     /*min-width:460px;*/
   }
+  md-content .card-e {
+    padding: 15px;
+  }
 }
 @media (min-width: 480px ) {
   .mainframe-card {
@@ -95,6 +98,10 @@ md-list-item > button {
   .mainframe-comms {
     min-width:460px;
     padding:
+  }
+  md-content .card-e {
+    padding: 15px;
+    min-width: 400px;
   }
 }
 
@@ -181,6 +188,7 @@ p.success {
   margin-bottom: 10px;
   font-variant: small-caps;
   letter-spacing:10px;
+  text-align:center;
 }
 .serv-sub {
   font-size: 24px;

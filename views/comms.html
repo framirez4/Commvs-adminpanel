@@ -5,12 +5,21 @@
   <md-icon class="material-icons">search</md-icon>
 </md-toolbar>
 -->
-  <md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout layout-align="center center">
-    <md-content layout="column" layout-fill="" layout-align="top center">
+
+  <md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout-align="center center">
+    <md-content layout="column" layout-align="top center">
         <md-list>
-          <md-subheader class="md-no-sticky">Comercios disponibles en {{address_available}}</md-subheader>
-          <div ng-hide="comms.length" layout="row" layout-align="center center">
-            <h2 style="color: #aaa">No hay comercios disponibles para mostrar en esta zona.</h2>
+          <md-subheader class="md-no-sticky">
+            <span>Comercios disponibles en {{address_available}}</span>
+            <md-button class="md-raised md-primary" ui-sref="main.home">Cambiar ubicación</md-button>
+          </md-subheader>
+          <div ng-hide="comms.length || emptyCommList" layout="row" layout-align="center center" class="text-center">
+            <!--<h2 style="color: #aaa">No hay comercios disponibles para mostrar en esta zona.</h2>-->
+            <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div ng-show="emptyCommList" layout="row" layout-align="center center" class="text-center">
+            <h2 style='color: #aaa'>No hay comercios disponibles para mostrar en esta zona.</h2>
           </div>
           <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
             <!--<img ng-show="comm.logo" ng-src="{{comm.logo}}?{{$index}}" class="md-avatar" alt="Logo">-->
@@ -21,7 +30,7 @@
               </md-button>
             </div>
             <div class="md-list-item-text" layout="column" flex>
-              <h3>{{ comm.name }} | <small>{{ comm._id }}</small></h3>
+              <h3>{{ comm.name }}</h3>
               <h4>{{ comm.location }}</h4>
             </div>
             <div>
