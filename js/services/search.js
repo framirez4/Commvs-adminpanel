@@ -7,6 +7,7 @@ angular.module('factory.search', ['kapeloi.config'])
 function SearchFactory($http, $q, hostServer){
   return {
     get: function(query) {
+      console.log(query);
       var defered = $q.defer();
       var promise = defered.promise;
 

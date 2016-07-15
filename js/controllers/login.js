@@ -33,7 +33,7 @@
           store.set('user.role', decoded.role);
           store.set('user.favs', decoded.favs);
           store.set('user.owns', decoded.owns);
-
+          store.set('user.loc', decoded.loc);
           // if user is an admin, go to main.admin, else main.comms:
           if(store.get("user.role") === 'admin'){
             $stateParams.dest = 'main.admin';

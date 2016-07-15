@@ -6,11 +6,11 @@
 
   function CommFactory($http, hostServer){
     return {
-      get: function(lat, long) {
+      get: function(lat, long, loc) {
         return $http({
           method: 'GET',
           url: hostServer + '/comms',
-          params: {latitude: lat, longitude: long}
+          params: {lat: lat, lng: long, loc: loc}
         });
       },
       comm: function(comm_id) {

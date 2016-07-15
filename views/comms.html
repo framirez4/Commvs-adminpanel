@@ -5,7 +5,13 @@
   <md-icon class="material-icons">search</md-icon>
 </md-toolbar>
 -->
-
+<div layout="column" flex layout-fill ng-cloak>
+  <md-subheader class="md-primary md-no-momentum">
+    <md-input-container style="margin:0;height:30px;" flex>
+      <input ng-model="searchName" type="text" placeholder="Buscar comercios">
+    </md-input-container>
+    <md-button class="md-fab md-mini md-primary" aria-label="search" ng-click="searchComms()"><md-icon class="material-icons">search</md-icon></md-button>
+  </md-subheader>
   <md-whiteframe layout="column" class="md-whiteframe-z3 mainframe-comms" layout-align="center center">
     <md-content layout="column" layout-align="top center">
         <md-list>
@@ -18,7 +24,7 @@
             <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
             <span class="sr-only">Loading...</span>
           </div>
-          <div ng-show="emptyCommList" layout="row" layout-align="center center" class="text-center">
+          <div ng-show="emptyCommList && !comms.length" layout="row" layout-align="center center" class="text-center">
             <h2 style='color: #aaa'>No hay comercios disponibles para mostrar en esta zona.</h2>
           </div>
           <md-list-item class="md-3-line" ng-repeat="comm in comms" ng-click="null">
@@ -43,3 +49,4 @@
         </md-list>
     </md-content>
   </md-whiteframe>
+</div>

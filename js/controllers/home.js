@@ -20,6 +20,7 @@
         //Store city location (gps) and address (name + CP)
         $scope.position.cityLocation = data.data.results[0].geometry.location;
         $scope.position.address = data.data.results[0].formatted_address;
+        $scope.position.locality = data.data.results[0].address_components[1].long_name;
       },
       function errorCallback(data, status, headers, config) {
         console.warn("Error on geoCode call");
@@ -37,7 +38,8 @@
         }).then(function successCallback(data) {
           // Store user address from position
           $scope.position.address = data.data.results[0].formatted_address;
-          $scope.position.locality = data.data.results[0].address_components[0].long_name;
+          $scope.position.locality = data.data.results[0].address_components[1].long_name;
+
         },
         function errorCallback(data, status, headers, config) {
           console.warn("Error on Geocode call");
@@ -69,7 +71,8 @@
       if(
         $scope.position.address &&
         $scope.position.cityLocation.lat &&
-        $scope.position.cityLocation.lng
+        $scope.position.cityLocation.lng &&
+        $scope.position.locality
       ) {
         console.log("DONE! LET'S GO!");
         $state.go('main.comms', { position: $scope.position });

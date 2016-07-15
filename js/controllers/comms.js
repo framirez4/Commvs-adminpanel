@@ -7,22 +7,23 @@
     'factory.favs',
     'factory.comm',
     'factory.user',
-    'factory.own'
+    'factory.own',
+    'factory.search'
   ])
   .controller('CommsController', CommsController);
 
 
-  function CommsController( $rootScope, $scope, $http, store, jwtHelper, UserFactory, CommFactory, FavFactory, OwnershipFactory, $mdDialog, $state, $stateParams) {
-
+  function CommsController( $rootScope, $scope, $http, store, jwtHelper, UserFactory, CommFactory, FavFactory, OwnershipFactory, SearchFactory, $mdDialog, $state, $stateParams) {
+    $scope.searchName = ''
 
 
     $scope.jwt = store.get('jwt');
 
     $scope.getComms = function(position) {
-      if(!position) position = {position: {cityLocation: {lat: '', lng: ''}}};
+      if(!position) position = {position: {cityLocation: {lat: '', lng: ''}}, locality: ''};
         $scope.address_available = position.address;
         // Asks for commerces according to data obtained from home.
-        CommFactory.get(position.cityLocation.lat, position.cityLocation.lng)
+        CommFactory.get(position.cityLocation.lat, position.cityLocation.lng, position.locality)
         .then(function(data) {
           if(!data.data){
             $scope.emptyCommList = true;
@@ -32,33 +33,21 @@
 
         });
     };
+    $scope.searchComms = function() {
+        // Asks for commerces according to data obtained from home.
+        SearchFactory.get({name: $scope.searchName})
+        .then(function(data) {
+          console.log(data);
+          $scope.comms = [];
+          if(!data.length){
+            $scope.emptyCommList = true;
+          } else {
+            $scope.comms = data;
+          }
 
-
-/*
-    $scope.addComm = function() {
-      console.log($scope.newcomm);
-      CommFactory.add(store.get('jwt'), $scope.newcomm)
-      .then(function(data) {
-        $scope.getComms();
-      })
+        });
     };
-    $scope.editComm = function() {
-      console.log($scope.editcomm);
-      CommFactory.edit(store.get('jwt'), $scope.editcomm)
-      .then(function(data){
-        console.log(data);
-        if(data.data.success) $state.go('home.main.owners.list');
-      });
-    }
 
-
-    $scope.deleteComm = function(id) {
-      CommFactory.delete(store.get('jwt'), id)
-      .then(function(data) {
-        $scope.getComms();
-      });
-    };
-*/
     $scope.toggleStar = function(id) {
       // if id not in user favs
       var index = $rootScope.favs.indexOf(id)
@@ -84,25 +73,6 @@
       }
 
     };
-/*
-    $scope.getOwnerkey = function(id, ev) {
-      OwnershipFactory.get(store.get('jwt'), id)
-      .then(function(data){
-        console.log(data.data);
-          $mdDialog.show(
-            $mdDialog.alert()
-              .clickOutsideToClose(true)
-              .title('Ownership key for ' + data.data.name)
-              .textContent('Key: ' + data.data.ownership.key)
-              .ariaLabel('Ownership dialog')
-              .ok('Got it!')
-              .targetEvent(ev)
-          );
-
-      });
-    };
-    */
-
 
 
     if($stateParams.position.cityLocation) {
