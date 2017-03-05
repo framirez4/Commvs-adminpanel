@@ -1,34 +1,31 @@
-(function(){
-  'use strict';
+  'use strict'
 
-angular.module('factory.own', ['kapeloi.config'])
-  .factory("OwnershipFactory", OwnershipFactory);
+  angular.module('factory.own', ['kapeloi.config'])
+    .factory('OwnershipFactory', OwnershipFactory)
 
-function OwnershipFactory($http, hostServer){
-  return {
-    get: function(jwt, comm_id) {
-      return $http({
-        method: 'GET',
-        url: hostServer + '/ownership/' + comm_id,
-        headers: {'x-access-token': jwt }
-      });
-    },
-    post: function(jwt, comm_id, code) {
-      return $http({
-        method: 'POST',
-        url: hostServer + '/ownership/' + comm_id,
-        headers: {'x-access-token': jwt },
-        data: { 'key': code }
-      });
-    },
-    delete: function(jwt, comm_id) {
-      return $http({
-        method: 'DELETE',
-        url: hostServer + '/ownership/' + comm_id,
-        headers: {'x-access-token': jwt }
-      });
+  function OwnershipFactory ($http, hostServer) {
+    return {
+      get: function (jwt, commId) {
+        return $http({
+          method: 'GET',
+          url: hostServer + '/ownership/' + commId,
+          headers: {'x-access-token': jwt}
+        })
+      },
+      post: function (jwt, commId, code) {
+        return $http({
+          method: 'POST',
+          url: hostServer + '/ownership/' + commId,
+          headers: {'x-access-token': jwt},
+          data: {'key': code}
+        })
+      },
+      delete: function (jwt, commId) {
+        return $http({
+          method: 'DELETE',
+          url: hostServer + '/ownership/' + commId,
+          headers: {'x-access-token': jwt}
+        })
+      }
     }
   }
-}
-
-})();

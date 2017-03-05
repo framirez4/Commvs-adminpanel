@@ -12,6 +12,11 @@
   },
   "author": "Francesc Ramírez",
   "license": "ISC",
+  "standard": {
+    "globals": [
+      "angular"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/framirez4/Commvs-adminpanel/issues"
   },

@@ -1,36 +1,31 @@
-(function() {
-  'use strict';
 
-  angular.module( 'controller.users', [
+  'use strict'
+
+  angular.module('controller.users', [
     'angular-storage',
     'angular-jwt',
-    'factory.user',
+    'factory.user'
 
   ])
-  .controller('UsersController', UsersController);
+  .controller('UsersController', UsersController)
 
+  function UsersController ($scope, $http, store, jwtHelper, UserFactory, $mdDialog, $state) {
+    $scope.jwt = store.get('jwt')
+    $scope.role = store.get('user.role')
+    $scope.favs = store.get('user.favs')
 
-  function UsersController( $scope, $http, store, jwtHelper, UserFactory, $mdDialog, $state) {
-
-    $scope.jwt = store.get('jwt');
-    $scope.role = store.get('user.role');
-    $scope.favs = store.get('user.favs');
-
-    $scope.getUsers = function(){
+    $scope.getUsers = function () {
       UserFactory.get(store.get('jwt'))
-      .then(function(data) {
-        $scope.users = data.data;
-      });
-    }
-
-    $scope.deleteUser = function(email) {
-      UserFactory.delete(store.get('jwt'), {'email': email })
-      .then(function(data) {
-        $scope.getUsers();
+      .then(function (data) {
+        $scope.users = data.data
       })
     }
 
-    $scope.getUsers();
-
-  }; // UsersCtrl end
-})();
+    $scope.deleteUser = function (email) {
+      UserFactory.delete(store.get('jwt'), {'email': email})
+      .then(function (data) {
+        $scope.getUsers()
+      })
+    }
+    $scope.getUsers()
+  }

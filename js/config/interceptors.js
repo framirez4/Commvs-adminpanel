@@ -1,16 +1,12 @@
-(function() {
-  'use strict';
+  'use strict'
 
   angular.module('config.interceptors', [
     'angular-jwt'
   ])
-    .config(function (jwtInterceptorProvider, $httpProvider) {
+  .config(function (jwtInterceptorProvider, $httpProvider) {
+    jwtInterceptorProvider.tokenGetter = function (store) {
+      return store.get('jwt')
+    }
 
-      jwtInterceptorProvider.tokenGetter = function(store) {
-        return store.get('jwt');
-      }
-
-      $httpProvider.interceptors.push('jwtInterceptor');
-    });
-    
-})();
+    $httpProvider.interceptors.push('jwtInterceptor')
+  })

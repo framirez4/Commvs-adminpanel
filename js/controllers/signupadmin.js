@@ -1,31 +1,27 @@
-(function() {
-  'use strict';
+  'use strict'
 
-  angular.module( 'controller.signupadmin', [
+  angular.module('controller.signupadmin', [
     'angular-storage',
     'kapeloi.config'
   ])
-  .controller( 'SignupAdminController', SignupAdminController);
+  .controller('SignupAdminController', SignupAdminController)
 
 
-  function SignupAdminController( $scope, $rootScope, store, $state, UserFactory ) {
-    $scope.user = {};
+  function SignupAdminController ($scope, $rootScope, store, $state, UserFactory) {
+    $scope.user = {}
 
-    $scope.createAdmin = function() {
+    $scope.createAdmin = function () {
       UserFactory.add($scope.user)
-      .then(function(response) {
-        console.log(response);
-        if(response.data.success == false){
-          $scope.signupErr = response.data.message;
+      .then(function (response) {
+        console.log(response)
+        if (response.data.success === false) {
+          $scope.signupErr = response.data.message
           console.log($scope.signupErr)
         } else {
-          $scope.signupSuccess = response.data.message.es;
+          $scope.signupSuccess = response.data.message.es
         }
-
-      }, function(error) {
-        alert(error.data);
-      });
-    };
-  };
-
-})();
+      }, function (error) {
+        window.alert(error.data)
+      })
+    }
+  }

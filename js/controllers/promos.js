@@ -1,12 +1,9 @@
-(function() {
-  'use strict';
+  'use strict'
 
-  angular.module( 'controller.promos', [
+  angular.module('controller.promos', [
 
   ])
-  .controller('PromosController', PromosController);
+  .controller('PromosController', PromosController)
 
-
-  function PromosController( $scope, $http, store, jwtHelper, $mdDialog, $state) {
-  };
-})();
+  function PromosController ($scope, $http, store, jwtHelper, $mdDialog, $state) {
+  }

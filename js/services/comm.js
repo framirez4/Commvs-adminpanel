@@ -1,48 +1,45 @@
-(function(){
-  'use strict';
+  'use strict'
 
   angular.module('factory.comm', ['kapeloi.config'])
-    .factory("CommFactory", CommFactory);
+    .factory('CommFactory', CommFactory)
 
-  function CommFactory($http, hostServer){
+  function CommFactory ($http, hostServer) {
     return {
-      get: function(lat, long, loc) {
+      get: function (lat, long, loc) {
         return $http({
           method: 'GET',
           url: hostServer + '/comms',
           params: {lat: lat, lng: long, loc: loc}
-        });
+        })
       },
-      comm: function(comm_id) {
+      comm: function (commId) {
         return $http({
           method: 'GET',
-          url: hostServer + '/comms/' + comm_id
-        });
+          url: hostServer + '/comms/' + commId
+        })
       },
-      add: function(jwt, comm_obj) {
+      add: function (jwt, commObj) {
         return $http({
           method: 'POST',
           url: hostServer + '/comms',
-          headers: {'x-access-token': jwt },
-          data: comm_obj
-        });
+          headers: {'x-access-token': jwt},
+          data: commObj
+        })
       },
-      edit: function(jwt, comm_id, comm_obj) {
+      edit: function (jwt, commId, commObj) {
         return $http({
           method: 'PUT',
-          url: hostServer + '/comms/' + comm_id,
-          headers: {'x-access-token': jwt },
-          data: comm_obj
-        });
+          url: hostServer + '/comms/' + commObj,
+          headers: {'x-access-token': jwt},
+          data: commObj
+        })
       },
-      delete: function(jwt, comm_id) {
+      delete: function (jwt, commId) {
         return $http({
           method: 'DELETE',
-          url: hostServer + '/comms/' + comm_id,
-          headers: {'x-access-token': jwt }
-        });
+          url: hostServer + '/comms/' + commId,
+          headers: {'x-access-token': jwt}
+        })
       }
     }
   }
-
-})();
